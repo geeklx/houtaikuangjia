@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 <!--    <version>2.0.0-SNAPSHOT</version>-->
-    <artifactId>fosung-system-support-pbs</artifactId>
+    <artifactId>geek-system-support-pbs</artifactId>
     <description>系统管理接口</description>
     <dependencies>
 

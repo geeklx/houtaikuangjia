@@ -8,14 +8,14 @@
         <version>2.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>fosung-system-support-service</artifactId>
+    <artifactId>geek-system-support-service</artifactId>
     <description>系统管理接口</description>
 
     <dependencies>
 
         <dependency>
             <groupId>org.geek.houtai</groupId>
-            <artifactId>fosung-system-support-facade</artifactId>
+            <artifactId>geek-system-support-facade</artifactId>
             <version>${project.version}</version>
         </dependency>
 

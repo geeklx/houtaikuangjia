@@ -8,17 +8,24 @@
         <version>2.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>fosung-system-support-rest</artifactId>
+    <artifactId>geek-system-support-client</artifactId>
     <description>系统管理接口</description>
     <dependencies>
 
+
         <dependency>
             <groupId>org.geek.houtai</groupId>
-            <artifactId>fosung-system-support-service</artifactId>
+            <artifactId>geek-system-support-service</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-<!--        第三方-->
+        <!--        第三方-->
+        <dependency>
+            <groupId>com.fosung.uaa</groupId>
+            <artifactId>fosung-framework-uaa-client</artifactId>
+            <version>1.0.3-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>com.fosung.infrastructure</groupId>
             <artifactId>infrastructure-web</artifactId>
@@ -34,10 +41,10 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.7.6</version>
             </plugin>
-            <!-- <plugin>
-                 <groupId>com.spotify</groupId>
-                 <artifactId>dockerfile-maven-plugin</artifactId>
-             </plugin>-->
+            <!--<plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+            </plugin>-->
         </plugins>
     </build>
 

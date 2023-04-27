@@ -8,24 +8,18 @@
         <version>2.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>fosung-system-support-client</artifactId>
+    <artifactId>geek-system-support-outserver</artifactId>
     <description>系统管理接口</description>
     <dependencies>
 
 
         <dependency>
             <groupId>org.geek.houtai</groupId>
-            <artifactId>fosung-system-support-service</artifactId>
+            <artifactId>geek-system-support-service</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!--        第三方-->
-        <dependency>
-            <groupId>com.fosung.uaa</groupId>
-            <artifactId>fosung-framework-uaa-client</artifactId>
-            <version>1.0.3-SNAPSHOT</version>
-        </dependency>
-
+<!--        第三方-->
         <dependency>
             <groupId>com.fosung.infrastructure</groupId>
             <artifactId>infrastructure-web</artifactId>
@@ -47,6 +41,5 @@
             </plugin>-->
         </plugins>
     </build>
-
 
 </project>

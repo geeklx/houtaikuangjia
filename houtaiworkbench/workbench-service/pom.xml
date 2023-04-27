@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>org.geek.houtai</groupId>
-            <artifactId>fosung-system-support-pbs</artifactId>
+            <artifactId>geek-system-support-pbs</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
