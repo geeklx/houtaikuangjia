@@ -12,7 +12,7 @@ import org.springframework.core.annotation.Order;
 @Slf4j
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.REGEX,pattern = "com.fosung.system.support.system.service.auth.*")})
+@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.REGEX,pattern = "com.geek.system.support.system.service.auth.*")})
 @EnableConfigurationProperties(SystemProperties.class)
 public class SystemClientAutoConfiguration {
 

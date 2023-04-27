@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @Configuration
-@ComponentScan(basePackages = {"com.fosung.workbench.configurecenter.service",
-        "com.fosung.workbench.common"})
+@ComponentScan(basePackages = {"com.geek.workbench.configurecenter.service",
+        "com.geek.workbench.common"})
 public class WorkBenchConfigAutoConfiguration {
 }

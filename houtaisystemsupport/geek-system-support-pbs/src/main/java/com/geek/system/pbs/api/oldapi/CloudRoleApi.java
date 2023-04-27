@@ -21,7 +21,7 @@ public interface CloudRoleApi {
      * @param source
      * @param appId
      * @date 2021/4/28 13:49
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @PostMapping("/listByApp")
     ResponseParam getRoleByApp(@PathVariable("source") String source,@RequestParam("appId") Long appId);

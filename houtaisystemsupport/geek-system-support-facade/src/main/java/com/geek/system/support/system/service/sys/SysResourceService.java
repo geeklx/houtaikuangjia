@@ -31,7 +31,7 @@ public interface SysResourceService extends AppBaseDataService<SysResourceEntity
      * @param params
      * @author liuke
      * @date 2022/6/28 14:02
-     * @return java.util.List<com.fosung.system.support.system.vo.SysResourceMenuVo>
+     * @return java.util.List<com.geek.system.support.system.vo.SysResourceMenuVo>
      */
     List<SysResourceMenuVo> selectByAppCodeAndRole(Map<String,Object> params);
 
@@ -54,7 +54,7 @@ public interface SysResourceService extends AppBaseDataService<SysResourceEntity
      * @param appId
      * @author liuke
      * @date 2021/12/3 14:29
-     * @return java.util.List<com.fosung.system.support.system.entity.sys.SysResourceEntity>
+     * @return java.util.List<com.geek.system.support.system.entity.sys.SysResourceEntity>
      */
     List<SysResourceEntity> getResoueceByAppId(Long appId);
 

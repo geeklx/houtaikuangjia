@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.fosung.system.pbs")
+@ComponentScan("com.geek.system.pbs")
 @EnableConfigurationProperties({ PbsClientProperties.class, CloudProperties.class, DingTalkProperties.class})
 public class PbsClientAutoConfiguration {
 

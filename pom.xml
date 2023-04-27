@@ -43,7 +43,15 @@
         <module>./houtaiworkbench/workbench-rest</module>
         <module>./houtaiworkbench/workbench-service</module>
     </modules>
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fosung.infrastructure</groupId>
+                <artifactId>infrastructure-web</artifactId>
+                <version>0.9-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <repositories>
         <repository>
             <id>nexus</id>

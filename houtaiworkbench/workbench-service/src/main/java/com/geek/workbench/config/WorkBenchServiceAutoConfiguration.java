@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @Configuration
-@ComponentScan(basePackages = {"com.fosung.workbench.service"
-        ,"com.fosung.workbench.config"
-        ,"com.fosung.workbench.util"
+@ComponentScan(basePackages = {"com.geek.workbench.service"
+        ,"com.geek.workbench.config"
+        ,"com.geek.workbench.util"
 })
 public class WorkBenchServiceAutoConfiguration {
 }

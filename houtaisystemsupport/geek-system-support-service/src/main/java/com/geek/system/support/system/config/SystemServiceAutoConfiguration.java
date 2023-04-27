@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Slf4j
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@ComponentScan(basePackages = "com.fosung.system.support.*.service")
+@ComponentScan(basePackages = "com.geek.system.support.*.service")
 @EnableConfigurationProperties(SystemProperties.class)
 public class SystemServiceAutoConfiguration {
 
