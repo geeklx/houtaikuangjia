@@ -1,0 +1,42 @@
+app:
+  rocketmq:
+    sendUrl: http://t-repair.xczx-jn.com/api/cloud/repair/send
+  pbs:
+    client:
+      url: http://10.7.211.36:7001
+  dao:
+    dataSource:
+      driverClass: com.highgo.jdbc.Driver
+      password: root
+      url: jdbc:highgo://127.0.0.1:5432/fosung_system-v2?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+      username: postgres
+#      password: Fosung@501
+#      url: jdbc:highgo://10.7.211.104:5432/fosung_system_fc?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+#      username: postgres
+#      password: Fosung@501
+#      url: jdbc:highgo://10.7.211.35:5866/fosung_system_xctest?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+#      username: highgo
+    jpa:
+      showSql: 'true'
+  secure:
+    auth:
+      enable: 'false'
+      urlAuths:
+      - filter: anon
+        url: /**
+    referer:
+      enable: 'false'
+    sso:
+      enable: 'false'
+  session:
+    cookieSessionEncode: 'false'
+spring:
+  redis:
+    database: '1'
+    host: 127.0.0.1
+    port: '6379'
+logging:
+  level:
+    com.fosung.system.support.system.dao: debug
+server:
+  port: 6300

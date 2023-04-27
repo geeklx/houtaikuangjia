@@ -31,12 +31,21 @@
 
     <modules>
         <module>./houtaisystemsupport/demo1</module>
+<<<<<<< HEAD
         <module>./houtaisystemsupport/geek-system-support-client</module>
         <module>./houtaisystemsupport/geek-system-support-facade</module>
         <module>./houtaisystemsupport/geek-system-support-outserver</module>
         <module>./houtaisystemsupport/geek-system-support-pbs</module>
         <module>./houtaisystemsupport/geek-system-support-rest</module>
         <module>./houtaisystemsupport/geek-system-support-service</module>
+=======
+        <module>./houtaisystemsupport/fosung-system-support-client</module>
+        <module>./houtaisystemsupport/fosung-system-support-facade</module>
+        <module>./houtaisystemsupport/fosung-system-support-outserver</module>
+        <module>./houtaisystemsupport/fosung-system-support-pbs</module>
+        <module>./houtaisystemsupport/fosung-system-support-rest</module>
+        <module>./houtaisystemsupport/fosung-system-support-service</module>
+>>>>>>> 2bdce1cb9453989142bcea18024a7866c223a529
         <module>./houtaiworkbench/demo2</module>
         <module>./houtaiworkbench/workbench-configurecenter</module>
         <module>./houtaiworkbench/workbench-facade</module>

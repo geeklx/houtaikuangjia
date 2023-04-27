@@ -1,0 +1,75 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.system.support.system.dao.sys.AuthClientDao">
+
+    <resultMap id="baseResultMap" type="com.geek.system.support.system.entity.sys.AuthClientEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+        <result column="project_app_id" property="projectAppId" jdbcType="BIGINT"/>
+        <result column="project_code" property="projectCode" jdbcType="VARCHAR"/>
+        <result column="project_id" property="projectId" jdbcType="BIGINT"/>
+        <result column="app_name" property="appName" jdbcType="VARCHAR"/>
+        <result column="app_code" property="code" jdbcType="VARCHAR"/>
+        <result column="app_id" property="appId" jdbcType="VARCHAR"/>
+        <result column="app_type" property="type" jdbcType="VARCHAR"/>
+        <result column="app_type" property="appType" jdbcType="VARCHAR"/>
+        <result column="auth_name" property="authName" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="web_server_redirect_uri" property="webServerRedirectUri" jdbcType="VARCHAR"/>
+        <result column="authorized_grant_types" property="authorizedGrantTypes" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="queryAuthClientPage" parameterType="java.util.Map" resultMap="baseResultMap" >
+        SELECT papp.id project_app_id,pro.project_code ,pro.project_name,pro.id project_id,app.app_type,app.app_code,app.app_name,app.id as app_id,ter.auth_name,ter.url,ter.web_server_redirect_uri,ter.authorized_grant_types,ter.id
+        FROM sys_project_app papp
+        LEFT JOIN sys_application app on papp.app_id = app.id
+        LEFT JOIN sys_app_terminal ter on app.id = ter.app_id and ter.project_id = papp.project_id
+        LEFT JOIN sys_project pro on pro.id = papp.project_id
+        WHERE app.del = false and pro.del = false
+        <if test="param.projectId != null">
+            and pro.id = #{param.projectId}
+        </if>
+        <if test="param.appName != null">
+            and app.app_name like '%${param.appName}%'
+        </if>
+        order by papp.create_time desc
+    </select>
+    <select id="queryAuthClientById" parameterType="java.lang.Long" resultMap="baseResultMap" >
+        SELECT
+            ter.*,app.app_name
+        FROM
+            sys_app_terminal ter
+        LEFT JOIN sys_application app ON app.ID = ter.app_id
+        where ter.id = #{id}
+    </select>
+
+    <select id="queryAppByUserId" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT ra.app_id as "appId",pa.category_code as "appTypeCode",pa.category_name as "appTypeName",at.id ,
+        at.name ,at.code,at.icon,at.url,at.type
+        FROM sys_user_role ur
+        INNER JOIN sys_role_app ra  on ur.role_id = ra.role_id
+        INNER JOIN sys_project_app pa on pa.app_id = ra.app_id
+        INNER JOIN sys_app_terminal at on at.app_id = ra.app_id
+        where  ur.user_id = #{param.userId}
+        <if test="param.terminalTypes != null and param.terminalTypes != ''">
+            and at.type IN (${param.terminalTypes})
+        </if>
+        <if test="param.projectIds != null and param.projectIds != ''">
+            and ur.project_id IN (${param.projectIds})
+        </if>
+        <if test="param.appType != null and param.appType != ''">
+            and pa.category_code = #{param.appType}
+        </if>
+    </select>
+
+    <select id="queryUserOrgsByUserAndClient" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT role_code as "roleCode",role_name as "roleName",role_type as "roleType",scop.org_id as "orgId" FROM sys_role role
+        LEFT JOIN sys_user_role ur on role.id = ur.role_id
+        LEFT JOIN sys_user usr on ur.user_id = usr.id
+        LEFT JOIN sys_role_app rapp on rapp.role_id = role.id
+        LEFT JOIN sys_project_app papp on rapp.app_id = papp.app_id and rapp.project_id = papp.project_id
+        LEFT JOIN sys_app_terminal ter on rapp.app_id = ter.app_id
+        LEFT JOIN sys_user_role_scop scop on scop.user_id = usr.id and scop.role_id = ur.role_id
+        where ur.user_id = #{param.userId,jdbcType = BIGINT} and ter.client_id =#{param.clientId,jdbcType=VARCHAR}
+
+    </select>
+
+</mapper>
