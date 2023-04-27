@@ -1,9 +1,0 @@
-spring:
-  profiles:
-    active: ${SPRING_CONFIG_PROFILE:dev}
-  application:
-    name: ${SPRING_APPLICATION_NAME:fosung-system}
-  cloud:
-    config:
-      label: ${SPRING_CONFIG_LABEL:master}
-      uri: ${SPRING_CONFIG_URI:}
