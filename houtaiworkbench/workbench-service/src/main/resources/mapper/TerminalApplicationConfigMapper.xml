@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.workbench.dao.terminal.TerminalApplicationConfigDao" >
+    <resultMap id="baseResultMap" type="com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity">
+        <result column="project_name" property="projectName"/>
+        <result column="terminal_name" property="terminalName"/>
+    </resultMap>
+    <select id="queryTerminalAppByPage"  resultMap="baseResultMap" parameterType="java.util.Map">
+        SELECT
+        a.id,
+        a.project_id,
+        d.project_name,
+        a.terminal_id,
+        c.terminal_name,
+        a.app_id,
+        a.app_name,
+        a.version_num,
+        a.remark,
+        a.status,
+        a.create_time,
+        a.app_type,
+        a.app_icon
+        FROM
+        terminal_application_config a
+        left join application_basic b on a.app_id = b.id
+        left join terminal_basic c on a.terminal_id = c.id
+        left join project_basic d on a.project_id = d.id
+        where
+        a.del = false
+        and b.del = false
+        and c.del = false
+        and d.del = false
+        <if test="params.projectList!=null and params.projectList.size() > 0">
+            and a.project_id in
+            <foreach collection="params.projectList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="params.projectId!=null">
+            and a.project_id = #{params.projectId}
+        </if>
+        <if test="params.terminalId!=null">
+            and a.terminal_id = #{params.terminalId}
+        </if>
+        <if test="params.terminalCode!=null and params.terminalCode != ''">
+            AND c.terminal_code = #{params.terminalCode}
+        </if>
+        <if test="params.appName!=null and params.appName != ''">
+            AND a.app_name like concat('%', #{params.appName}, '%')
+        </if>
+        <if test="params.startTime!=null">
+            AND a.create_time &gt;= #{params.startTime}
+        </if>
+        <if test="params.endTime!=null">
+            AND a.create_time &lt;= #{params.endTime}
+        </if>
+        <if test="params.status!=null">
+            AND a.status = #{params.status}
+        </if>
+        order by a.create_time desc
+    </select>
+
+    <!--  根据应用版本id修改状态  -->
+    <update id="updateStatusByVersionId" parameterType="com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity">
+        update terminal_application_config set status = #{params.status} where app_version_id = #{params.appVersionId}
+    </update>
+
+    <!--  查询应用信息  -->
+    <select id="queryApplication"  resultType="java.util.Map" parameterType="com.geek.workbench.dto.application.ApplicationQueryDto">
+        select
+        distinct
+        config.id as "appConfigId",
+        config.app_id as "appId",
+        config.app_name as "appName",
+        config.remark as "remark",
+        basic.terminal_name as "terminalName",
+        basic.project_id as "projectId",
+        to_char(config.create_time,'yyyy-mm-dd hh24:mm:ss') as "createDateTime",
+        config.version_name as "versionName",
+        config.data_source as "dataSource"
+        from terminal_application_config config
+        left join terminal_basic basic
+        on config.terminal_id = basic.id
+        left join ( SELECT
+        app_config_id,
+        array_to_string( ARRAY ( SELECT "unnest" ( "array_agg" ( shelves_range ) ) ), ';' ) AS shelves_range
+        FROM
+        terminal_application_shelves
+        GROUP BY
+        app_config_id
+        ORDER BY
+        app_config_id
+        ) shelves
+        on config.id = shelves.app_config_id
+        where config.del = false and config.status = '${@StatusType@release.value}'
+        <if test="params.projectId !=null and params.projectId != ''">
+            and basic.project_id = #{params.projectId}
+        </if>
+        <if test="params.terminalId !=null and params.terminalId != ''">
+            and basic.id = #{params.terminalId}
+        </if>
+        <if test="params.shelvesList != null and params.shelvesList.size() > 0 ">
+            <foreach collection="params.shelvesList" item="item">
+                and shelves.shelves_range LIKE '%${item.shelvesRange}%'
+            </foreach>
+        </if>
+    </select>
+
+    <!--  根据应用id删除配置信息  -->
+    <update id="deleteByAppId" parameterType="java.lang.Long">
+        update terminal_application_config set del = true where app_id = #{appId}
+    </update>
+
+    <!--  根据终端包名和终端类型查询终端绑定应用信息 20211201 加  -->
+    <select id="queryTerminalApp"  resultMap="baseResultMap" parameterType="java.util.Map">
+        SELECT
+        config.ID,
+        config.terminal_id,
+        ter_basic.terminal_name,
+        config.app_id,
+        config.app_name,
+        config.version_num,
+        config.remark,
+        config.status,
+        config.create_time,
+        config.app_type,
+        config.app_icon
+        FROM
+        terminal_application_config config
+        LEFT JOIN application_basic app_basic ON config.app_id = app_basic.
+        ID LEFT JOIN terminal_basic ter_basic ON config.terminal_id = ter_basic.ID
+        WHERE
+        config.del = FALSE
+        AND app_basic.del = FALSE
+        AND ter_basic.del = FALSE
+        AND ter_basic.package_name = #{params.terminalPackageName}
+        AND ter_basic.terminal_type = #{params.terminalType}
+        <if test="params.appConfId!=null">
+            AND config.ID = #{params.appConfId}
+        </if>
+        <if test="params.appStatus!=null">
+            AND config.status = #{params.appStatus}
+        </if>
+        order by config.create_time desc
+    </select>
+</mapper>

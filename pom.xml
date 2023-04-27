@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.fosung.framework</groupId>
+        <artifactId>framework-parent</artifactId>
+        <version>0.7-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.geek.houtai</groupId>
+    <artifactId>houtaikuangjia</artifactId>
+    <packaging>pom</packaging>
+    <version>2.0.2-SNAPSHOT</version>
+    <name>houtaisystem</name>
+    <description>统一工作台后台框架</description>
+
+    <properties>
+<!--        <maven.compiler.source>11</maven.compiler.source>-->
+<!--        <maven.compiler.target>11</maven.compiler.target>-->
+        <fegin.version>1.4.4.RELEASE</fegin.version>
+        <framework.version>0.7-SNAPSHOT</framework.version>
+        <!--云平台-->
+        <base.version>2.0.2-SNAPSHOT</base.version>
+        <docker.repository>swr.cn-north-4.myhuaweicloud.com</docker.repository>
+        <docker.image.prefix>fosung_huawei</docker.image.prefix>
+    </properties>
+
+
+    <modules>
+        <module>./houtaisystemsupport/demo1</module>
+        <module>./houtaisystemsupport/fosung-system-support-client</module>
+        <module>./houtaisystemsupport/fosung-system-support-facade</module>
+        <module>./houtaisystemsupport/fosung-system-support-outserver</module>
+        <module>./houtaisystemsupport/fosung-system-support-pbs</module>
+        <module>./houtaisystemsupport/fosung-system-support-rest</module>
+        <module>./houtaisystemsupport/fosung-system-support-service</module>
+        <module>./houtaiworkbench/demo2</module>
+        <module>./houtaiworkbench/workbench-configurecenter</module>
+        <module>./houtaiworkbench/workbench-facade</module>
+        <module>./houtaiworkbench/workbench-rest</module>
+        <module>./houtaiworkbench/workbench-service</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>nexus repository</name>
+            <url>http://nexus.fosung.com:8081/nexus/content/groups/jar-all/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://nexus.fosung.com:8081/nexus/content/groups/jar-all/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://nexus.fosung.com:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot</id>
+            <name>Nexus snapshot Repository</name>
+            <url>http://nexus.fosung.com:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <!-- 项目打包时会将java目录中的*.xml文件也进行打包 -->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
+    </build>
+
+</project>

@@ -1,0 +1,11 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.system.support.system.dao.sys.SysApplicationDao">
+
+    <select id="selectByProjectId" parameterType="java.lang.Long" resultType="com.geek.system.support.system.entity.sys.SysApplicationEntity">
+        SELECT b.* FROM sys_project_app a
+        LEFT JOIN sys_application b on a.app_id = b.id
+        where  a.project_id = #{projectId}
+    </select>
+
+
+</mapper>

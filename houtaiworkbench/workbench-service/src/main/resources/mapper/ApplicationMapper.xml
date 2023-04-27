@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.workbench.dao.application.ApplicationBasicDao" >
+    <resultMap id="baseResultMap" type="com.geek.workbench.entity.application.ApplicationBasicEntity">
+        <result column="version_num" property="versionNum"/>
+    </resultMap>
+    <select id="queryByPage"  resultMap="baseResultMap" parameterType="java.util.Map">
+        SELECT app.*,pro.project_name,cat.category_name FROM application app 
+        LEFT JOIN project_basic_info pro on app.project_id = pro.id
+        LEFT JOIN application_category cat on app.category_id = cat.id
+        WHERE app.del = false
+        <if test="params.appName!=null and params.appName != ''">
+            AND app.app_name LIKE '%${params.appName}%'
+        </if>
+        <if test="params.appCode!=null and params.appCode != ''">
+            AND app.app_code LIKE '%${params.appCode}%'
+        </if>
+        <if test="params.appType!=null and params.appType != ''">
+            AND app.app_type = #{params.appType}
+        </if>
+        <if test="params.categoryId!=null and params.categoryId != ''">
+            AND app.category_id = #{params.categoryId}
+        </if>
+        <if test="params.startCreateDatetime!=null and params.startCreateDatetime != ''">
+            AND app.create_date_time &gt;= #{params.startCreateDatetime}
+        </if>
+        <if test="params.endCreateDatetime!=null and params.endCreateDatetime != ''">
+            AND app.create_date_time &lt;= #{params.endCreateDatetime}
+        </if>
+
+    </select>
+    <!--  查询最新版app  -->
+    <select id="queryNewApp" parameterType="com.geek.workbench.dto.terminal.TerminalApplicationConfigDto" resultType="com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity">
+        SELECT
+            a.id,
+            a.app_id,
+            b.app_name,
+            b.icon_url as "iconUrl",
+            b.remark,
+            b.app_type as "appTypes",
+            a.version_num,
+            a.last_update_time,
+            b.category_code
+        FROM
+            application_version a
+        LEFT JOIN application_basic b on a.app_id = b.id
+        <where>
+            a.del = false and b.del = false
+            and a.is_new_version = true
+            <if test="params.typeParams != null">
+                and a.app_type IN
+                <foreach collection="params.typeParams" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="params.categoryCode!=null and params.categoryCode != ''">
+                AND b.category_code = #{params.categoryCode}
+            </if>
+            <if test="params.appName!=null and params.appName != ''">
+                AND b.app_name LIKE '%${params.appName}%'
+            </if>
+        </where>
+
+    </select>
+    <!--  通过app的类型查询app分类  -->
+    <select id="queryCategory" resultMap="baseResultMap" parameterType="com.geek.workbench.dto.terminal.TerminalApplicationConfigDto">
+        SELECT
+            distinct b.category_code
+        FROM
+            application_version a
+        LEFT JOIN application_basic b ON a.app_id = b.id
+        <where>
+            b.category_code IS NOT NULL
+            <if test="params.typeParams != null">
+               and a.app_type IN
+                <foreach collection="params.typeParams" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+
+    </select>
+
+    <!--  设置应用配置信息为无效信息  -->
+    <update id="deleteAppConfigByAppId" parameterType="Long">
+        update application_config_android set del = true where app_id = #{appId} ;
+        update application_config_html set del = true where app_id = #{appId} ;
+        update application_config_ios set del = true where app_id = #{appId}
+    </update>
+</mapper>

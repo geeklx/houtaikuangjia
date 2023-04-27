@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.workbench.dao.terminal.TerminalConfigCommonDao" >
+    <resultMap id="baseResultMap" type="com.geek.workbench.entity.terminal.TerminalConfigCommonEntity">
+
+    </resultMap>
+
+    <select id="getAllCommonConfigurationInfo" parameterType="com.geek.workbench.entity.terminal.TerminalConfigCommonEntity" resultMap="baseResultMap">
+        select * from terminal_config_common
+        where
+        del = false
+        <if test="terminalCommonConfigurationInfo.terminalId != null">
+            and terminal_id = #{terminalCommonConfigurationInfo.terminalId}
+        </if>
+        <if test="terminalCommonConfigurationInfo.configCode != null and terminalCommonConfigurationInfo.configCode != ''">
+            and config_code = #{terminalCommonConfigurationInfo.configCode}
+        </if>
+        <if test="terminalCommonConfigurationInfo.configType != null and terminalCommonConfigurationInfo.configType != ''">
+            and config_type = #{terminalCommonConfigurationInfo.configType}
+        </if>
+    </select>
+
+    <update id="updateConfigValue" parameterType="com.geek.workbench.entity.terminal.TerminalConfigCommonEntity">
+        update
+            terminal_config_common
+        set
+            config_value = #{terminalCommonConfigurationInfo.configValue}
+        where
+        del = false
+        <!--        <if test="terminalCommonConfigurationInfo.terminalId != null and terminalCommonConfigurationInfo.terminalId != ''">-->
+        and terminal_id = #{terminalCommonConfigurationInfo.terminalId}
+        <!--        </if>-->
+        <if test="terminalCommonConfigurationInfo.configCode != null and terminalCommonConfigurationInfo.configCode != ''">
+            and config_code = #{terminalCommonConfigurationInfo.configCode}
+        </if>
+        <if test="terminalCommonConfigurationInfo.configType != null and terminalCommonConfigurationInfo.configType != ''">
+            and config_type = #{terminalCommonConfigurationInfo.configType}
+        </if>
+    </update>
+</mapper>

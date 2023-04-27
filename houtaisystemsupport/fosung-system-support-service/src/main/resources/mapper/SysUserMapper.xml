@@ -1,0 +1,417 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.system.support.system.dao.sys.SysUserDao">
+
+    <resultMap id="usermap" type="com.geek.system.support.system.entity.sys.SysUserEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="auth_status" property="authStatus" jdbcType="VARCHAR"/>
+        <result column="education" property="education" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="INTEGER"/>
+        <result column="hash" property="hash" jdbcType="VARCHAR"/>
+        <result column="head_img_url" property="headImgUrl" jdbcType="VARCHAR"/>
+        <result column="id_card" property="idCard" jdbcType="VARCHAR"/>
+        <result column="identity_id" property="identityId" jdbcType="VARCHAR"/>
+        <result column="nation" property="nation" jdbcType="VARCHAR"/>
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR"/>
+        <result column="org_code" property="orgCode" jdbcType="INTEGER"/>
+        <result column="org_id" property="orgId" jdbcType="VARCHAR"/>
+        <result column="org_name" property="orgName" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="political" property="political" jdbcType="VARCHAR"/>
+        <result column="post" property="post" jdbcType="VARCHAR"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="signature" property="signature" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="telephone" property="telephone" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="INTEGER"/>
+        <result column="user_type" property="userType" jdbcType="VARCHAR"/>
+        <result column="project_id" property="projectId" jdbcType="VARCHAR"/>
+        <result column="political" property="political" jdbcType="VARCHAR"/>
+        <result column="post" property="post" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+    <delete id="deleteAllShelves" parameterType="java.util.Map">
+        delete from ${params.tablename} where project_id = #{params.projectId} and user_id = #{params.userId}
+    </delete>
+
+    <select id="getCityProvinceInfo" resultType="com.geek.system.support.system.entity.sys.SysCityEntity">
+        SELECT DISTINCT c_province FROM cities
+    </select>
+
+    <select id="getCityInfoByProvince" resultType="com.geek.system.support.system.entity.sys.SysCityEntity">
+        SELECT * FROM cities where c_province = #{province} and substr(c_code,8) = '01'
+    </select>
+
+    <select id="getCityInfoByCode" resultType="com.geek.system.support.system.entity.sys.SysCityEntity">
+        SELECT * FROM cities where c_code like '${code}%'
+    </select>
+
+    <select id="queryAllSysRoleScop" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysRoleScopEntity">
+        SELECT
+            a.*,b.role_name as "roleName",b.role_type as "roleType"
+        FROM
+            sys_role_scop a
+        left join sys_role b on a.role_scop_id = b.id
+        where
+            b.del = false and b.status = 'normal' and b.role_type != 'superadmin'
+            <if test="params.projectId!=null">
+                and a.project_id = #{params.projectId}
+            </if>
+            <if test="params.projectId==null">
+                <if test="params.roleId!=null">
+                    and a.role_id = #{params.roleId}
+                </if>
+                <if test="params.roleId==null">
+                    and a.role_id is null
+                </if>
+            </if>
+    </select>
+
+    <select id="queryBindResource" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysUserResourceEntity">
+        select
+            a.*,b.menu_name as "resourceName",b.app_id as "appId",
+            c.app_name as "appName",b.parent_id as "parentId",
+            c.app_type as "appType"
+        from sys_user_resource a
+            left join sys_resource b on a.resource_id = b.id
+            left join sys_application c on b.app_id = c.id
+        where c.del = false and a.user_id = #{params.userId}
+        <if test="params.shelvesType == 'role'">
+            and a.role_id = #{params.roleId}
+        </if>
+        <if test="params.shelvesType == 'resource'">
+            and a.role_id is null
+        </if>
+    </select>
+    <select id="queryBindApp" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysUserResourceEntity">
+        select
+            a.*,
+            a.resource_id as "appId",
+            c.app_name as "appName",
+            c.app_type as "appType"
+        from sys_user_resource a
+        left join sys_application c on a.resource_id = c.id
+        where c.del = false and a.user_id = #{params.userId}
+        <if test="params.shelvesType == 'role'">
+            and a.role_id = #{params.roleId}
+        </if>
+        <if test="params.shelvesType == 'resource'">
+            and a.role_id is null
+        </if>
+    </select>
+    <select id="queryUserBindRole" parameterType="java.util.Map" resultType="java.lang.String">
+        select
+            b.role_name
+        from sys_user_role a
+            left join sys_role b on a.role_id = b.id
+        where b.del = false
+        <if test="params.userId != null">
+            and a.user_id = #{params.userId}
+        </if>
+    </select>
+    <select id="queryUserBindPost" resultType="com.geek.system.support.system.entity.sys.SysUserPostScopeEntity">
+        select
+        a.*,b.post_name as "postName"
+        from sys_user_post_scope a
+        left join sys_post b on a.post_id = b.id
+        where b.del = false
+        <if test="userId != null">
+            and a.user_id = #{userId}
+        </if>
+    </select>
+    <select id="queryUserByParams" parameterType="java.util.Map" resultMap="usermap">
+        SELECT a.* FROM sys_user a
+        LEFT JOIN sys_project p on a.project_id = p.id
+        WHERE a.del = false
+        <if test="params.projectCode != null and params.projectCode !=''">
+            and p.project_code =#{params.projectCode}
+        </if>
+        <if test="params.idCard != null and params.idCard !=''">
+            AND a.id_card = #{params.idCard}
+        </if>
+        <if test="params.telephone != null and params.telephone !=''">
+            AND a.telephone = #{params.telephone}
+        </if>
+        <if test="params.userName != null and params.userName !=''">
+            AND a.user_name = #{params.userName}
+        </if>
+        <if test="params.email != null and params.email !=''">
+            AND a.email = #{params.email}
+        </if>
+        <if test="params.id != null and params.id !=''">
+            AND a.id = #{params.id}
+        </if>
+        <if test="params.hash != null and params.hash !=''">
+            AND a.hash = #{params.hash}
+        </if>
+        <if test="params.wxOpenId != null and params.wxOpenId !=''">
+            AND a.wx_open_id = #{params.wxOpenId}
+        </if>
+    </select>
+
+    <select id="queryMoreUserByParams" parameterType="java.util.Map" resultMap="usermap">
+        SELECT a.* FROM sys_user a
+        LEFT JOIN sys_project p on a.project_id = p.id
+        WHERE a.del = false
+        <if test="params.projectCode != null and params.projectCode !=''">
+            and p.project_code =#{params.projectCode}
+        </if>
+        <if test="params.idCard != null and params.idCard !=''">
+            AND a.id_card = #{params.idCard}
+        </if>
+        <if test="params.telephone != null and params.telephone !=''">
+            AND a.telephone = #{params.telephone}
+        </if>
+        <if test="params.userName != null and params.userName !=''">
+            AND a.user_name = #{params.userName}
+        </if>
+        <if test="params.email != null and params.email !=''">
+            AND a.email = #{params.email}
+        </if>
+        <if test="params.id != null and params.id !=''">
+            AND a.id = #{params.id}
+        </if>
+        <if test="params.hash != null and params.hash !=''">
+            AND a.hash = #{params.hash}
+        </if>
+        <if test="params.wxOpenId != null and params.wxOpenId !=''">
+            AND a.wx_open_id = #{params.wxOpenId}
+        </if>
+    </select>
+    <select id="queryUserByRoleCode" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysUserEntity">
+        SELECT u.*,role.role_type as "roleType" FROM sys_user u
+        LEFT JOIN sys_user_role ur on u.id = ur.user_id
+        LEFT JOIN sys_role role on ur.role_id = role.id
+        WHERE u.del = false
+        <if test="params.roleCode != null and params.roleCode !=''">
+            AND role.role_code = #{params.roleCode}
+        </if>
+        <if test="params.roleCodes != null">
+            AND role.role_code IN
+            <foreach collection="params.roleCodes" open="(" close=")" separator="," item="roleCode" >
+                #{roleCode}
+            </foreach>
+        </if>
+        <if test="params.userName != null and params.userName !=''">
+            AND u.user_name = #{params.userName}
+        </if>
+        <if test="params.projectId != null">
+            AND u.project_id = #{params.projectId}
+        </if>
+    </select>
+
+    <select id="queryAllUserInfo" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysUserEntity">
+        SELECT u.* FROM sys_user u
+        WHERE u.del = false and u.project_code = #{params.projectCode}
+        <if test="params.orgId != null">
+            AND u.org_id = #{params.orgId}
+        </if>
+        <if test="params.idCard != null and params.idCard !=''">
+            AND u.id_card = #{params.idCard}
+        </if>
+        <if test="params.telephone != null and params.telephone !=''">
+            AND u.telephone like '${params.telephone}%'
+        </if>
+        <if test="params.realName != null and params.realName !=''">
+            AND u.real_name like '${params.realName}%'
+        </if>
+        <if test="params.realNameOrTelephoneLike != null and params.realNameOrTelephoneLike !=''">
+            AND (u.real_name like '${params.realNameOrTelephoneLike}%' or u.telephone like '${params.realNameOrTelephoneLike}%' )
+        </if>
+        <if test="params.party != null and params.party == true">
+            AND political IN ('PARTY','YUBEIDANGYUAN')
+        </if>
+    </select>
+    <select id="queryUserByOrgAndPost" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysUserEntity">
+        SELECT DISTINCT u.*,u.fixed_telephone as "contactDetails",u.head_img_url as "headUrl" FROM sys_user u
+        left join sys_user_post_scope ups on u.id = ups.user_id
+        WHERE u.del = false
+        <if test="params.orgId != null">
+            AND u.org_id = #{params.orgId,jdbcType = BIGINT}
+        </if>
+        <if test="params.postCode != null and params.postCode !=''">
+            AND ups.post_code = #{params.postCode}
+        </if>
+        <if test="params.ignoreOrgId != null">
+            AND u.org_id != #{params.ignoreOrgId}
+        </if>
+        <if test="params.ignorePostCode != null and params.ignorePostCode !=''">
+            AND ups.post_code != #{params.ignorePostCode}
+        </if>
+        <if test="params.realNameLike != null and params.realNameLike !=''">
+            AND u.real_name like '${params.realNameLike}%'
+        </if>
+        <if test="params.userIds != null">
+            AND u.id not IN
+            <foreach collection="params.userIds" item="userId" separator="," open="(" close=")">
+                #{userId}
+            </foreach>
+        </if>
+        <if test="params.telephone != null and params.telephone !=''">
+            AND u.telephone like '${params.telephone}%'
+        </if>
+        <if test="params.realNameOrTelephoneLike != null and params.realNameOrTelephoneLike !=''">
+            AND (u.real_name like '${params.realNameOrTelephoneLike}%' or u.telephone like '${params.realNameOrTelephoneLike}%' )
+        </if>
+        <if test="params.party != null and params.party == true">
+            AND political IN ('PARTY','YUBEIDANGYUAN')
+        </if>
+        <if test="params.party != null and params.party == false">
+            AND political NOT IN ('PARTY','YUBEIDANGYUAN')
+        </if>
+    </select>
+    <select id="queryUserByPost" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysUserEntity">
+        SELECT u.*,u.fixed_telephone as "contactDetails",u.head_img_url as "headUrl" FROM sys_user u
+        left join sys_user_post_scope ups on u.id = ups.user_id
+        WHERE u.del = false
+        <if test="params.postCode != null and params.postCode !=''">
+            AND ups.post_code = #{params.postCode}
+        </if>
+
+        <if test="params.orgIds != null">
+            AND u.org_id  IN
+            <foreach collection="params.orgIds" item="orgId" separator="," open="(" close=")">
+                #{orgId}
+            </foreach>
+        </if>
+
+    </select>
+
+    <select id="queryParentOrdUserByOrgAndRole" parameterType="java.util.Map" resultType="java.lang.String">
+        select usr.id,usr.org_code,role.role_code from sys_user usr
+        left join sys_user_role ur on usr.id =ur.user_id
+        left join sys_role role on ur.role_id = role.id
+        WHERE role.role_type = 'ADMIN' AND usr.org_code = #{searchParam.orgCode,jdbcType = VARCHAR} AND role.role_code = #{searchParam.roleCode,jdbcType = VARCHAR}
+
+    </select>
+
+    <select id="queryParentOrdUserByOrgIdAndAppId" parameterType="java.util.Map" resultType="java.lang.String">
+        SELECT usr.id FROM sys_user usr
+        LEFT JOIN sys_user_role urole on usr.id = urole.user_id
+        LEFT JOIN sys_role_app app on app.role_id = urole.role_id
+        LEFT JOIN sys_role role on role.id = urole.role_id
+        WHERE role.role_type = 'ADMIN'
+        and usr.org_id = #{param.orgId ,jdbcType = BIGINT}
+        and app.app_id=#{param.appId ,jdbcType = BIGINT}
+        <if test="param.roleCode != null and param.roleCode != ''">
+            and role.role_code = #{param.roleCode,jdbcType = VARCHAR}
+        </if>
+        <if test="param.userId != null and param.userId != ''">
+            and usr.id = #{param.userId,jdbcType = BIGINT}
+        </if>
+
+    </select>
+
+    <select id="queryParentOrdUserMapByOrgIdAndAppId" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT usr.id,usr.real_name as name FROM sys_user usr
+        LEFT JOIN sys_user_role urole on usr.id = urole.user_id
+        LEFT JOIN sys_role_app app on app.role_id = urole.role_id
+        LEFT JOIN sys_role role on role.id = urole.role_id
+        WHERE role.role_type = 'ADMIN'
+        and usr.org_id = #{param.orgId ,jdbcType = BIGINT}
+        and app.app_id=#{param.appId ,jdbcType = BIGINT}
+        <if test="param.roleCode != null and param.roleCode != ''">
+            and role.role_code = #{param.roleCode,jdbcType = VARCHAR}
+        </if>
+        <if test="param.userId != null and param.userId != ''">
+            and usr.id = #{param.userId,jdbcType = BIGINT}
+        </if>
+
+    </select>
+
+    <select id="queryUsersByOrgIdsAndAppIds" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT usr.id,usr.id as "userId",app.app_id as "appId",role.id as "roleId",
+               org.id as "controlScopeId",org.org_code as "controlScopeCode",org.org_name as "controlScopeName",org.parent_id as "controlScopeParentId",
+               false as del FROM sys_user usr
+               LEFT JOIN sys_user_role urole on usr.id = urole.user_id
+               LEFT JOIN sys_role_app app on app.role_id = urole.role_id
+               LEFT JOIN sys_role role on role.id = urole.role_id
+               LEFT JOIN sys_user_role_scop scop on scop.user_id = usr.id and scop.role_id = role.id
+               LEFT JOIN sys_org org on org.id = scop.org_id
+               WHERE role.role_type = 'ADMIN'
+
+                 <if test="params.userId != null">
+                     and usr.id = #{params.userId,jdbcType = BIGINT}
+                 </if>
+                 <if test="params.appId != null">
+                     and app.app_id= #{params.appId,jdbcType = BIGINT}
+                 </if>
+                 <if test="params.orgIds != null">
+                     and usr.org_id IN
+                     <foreach collection="params.orgIds" item="orgId" separator="," open="(" close=")">
+                         #{orgId,jdbcType = BIGINT}
+                     </foreach>
+                 </if>
+                 <if test="params.roleIds != null">
+                     and role.id IN
+                 <foreach collection="params.roleIds" item="roleId" separator="," open="(" close=")">
+                     #{roleId,jdbcType = BIGINT}
+                 </foreach>
+                 </if>
+
+
+
+    </select>
+    <select id="queryUserAppList" parameterType="java.lang.Long" resultType="com.geek.system.support.system.dto.out.CloudAppDto">
+        select
+            DISTINCT(u.resource_id) as "appId",
+            u.project_id as "projectId",
+            papp.category_name as "appTypeName",
+            papp.category_code as "appTypeCode",
+            tapp.code as "code",
+            tapp.name as "name",
+            tapp.icon as "icon",
+            tapp.url as "url",
+            tapp.type as "type",
+            sd.num
+        from
+            sys_user_resource u
+        left join sys_application app on u.resource_id = app.id
+        left join sys_project_app papp on app.id = papp.app_id and u.project_id = papp.project_id
+        left join sys_app_terminal tapp on papp.app_id = tapp.app_id and u.project_id = papp.project_id
+        left join sys_dict_data sd on sd.dict_value = papp.category_code and sd.project_id = papp.project_id
+        where
+            app.del = false
+            and u.user_id = #{userId}
+    </select>
+
+    <select id="queryAllUserByRoleCode" parameterType="java.util.Map" resultMap="usermap">
+        select u.* FROM sys_user u
+        LEFT JOIN sys_user_role ur on u.id = ur.user_id
+        LEFT JOIN sys_role role on role.id = ur.role_id
+        where u.project_code = #{params.projectCode}
+
+        <if test="params.realName != null and params.realName !=''">
+            and u.real_name like '%${params.realName}%'
+        </if>
+        <if test="params.roleCode != null and params.roleCode !=''">
+            AND role.role_code = #{params.roleCode}
+        </if>
+        <if test="params.orgId != null and params.orgId !=''">
+            AND u.org_id in (${params.orgId})
+        </if>
+    </select>
+
+    <select id="queryManagerUsers" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT usr.id,usr.sex,usr.telephone,usr.real_name as "realName",scop.org_id as "orgId" FROM sys_user usr
+        LEFT JOIN sys_user_role_scop scop on usr.id = scop.user_id
+        LEFT JOIN sys_role role on role.id = scop.role_id
+        where usr.project_code = #{params.projectCode}
+        <if test="params.orgId != null and params.orgId !=''">
+            and scop.org_id in(${params.orgId})
+        </if>
+        <if test="params.roleCode != null and params.roleCode !=''">
+            AND role.role_code = #{params.roleCode}
+        </if>
+    </select>
+    <select id="querySameUserName" resultType="java.lang.String">
+        SELECT user_name FROM sys_user usr
+        WHERE
+        user_name in (SELECT user_name FROM sys_user WHERE id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+        )
+    </select>
+</mapper>

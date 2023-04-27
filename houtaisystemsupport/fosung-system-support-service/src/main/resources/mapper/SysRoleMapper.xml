@@ -1,0 +1,125 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.system.support.system.dao.sys.SysRoleDao">
+
+    <select id="queryPage" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysRoleEntity">
+        SELECT
+            role.id,
+            role.project_id,
+            pro.project_name as "projectName",
+            role.role_name,
+            role.role_code,
+            role.role_type,
+            role.remark,
+            role.status,
+            role.create_time,
+            role.num
+        FROM
+            sys_role role
+        LEFT JOIN sys_project pro on role.project_id = pro.id
+        where role.del = false and pro.del = false and role.role_type != 'superadmin'
+        <if test="params.projectId!=null">
+            and role.project_id = #{params.projectId}
+        </if>
+        <if test="params.roleName!=null and params.roleName!=''">
+            and role.role_name like '%${params.roleName}%'
+        </if>
+        <if test="params.roleType!=null">
+            and role.role_type = #{params.roleType}
+        </if>
+        <if test="params.startTime!=null">
+            and role.create_time &gt;= #{params.startTime}
+        </if>
+        <if test="params.endTime!=null">
+            and role.create_time &lt;= #{params.endTime}
+        </if>
+        <if test="params.appId != null and params.appId != ''">
+            and role.id in (SELECT role_id FROM sys_role_app where app_id = #{params.appId})
+        </if>
+        order by role.num asc, role.create_time desc
+    </select>
+
+    <select id="queryRolePower" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysRoleResourceEntity">
+        SELECT
+        a.id,
+        a.role_id,
+        b.role_name AS "roleName",
+        a.app_id,
+        c.app_name AS "appName",
+        a.resource_id,
+        d.menu_name as "menuName",
+        d.level as "level",
+        d.parent_id as "parentId",
+        c.app_type as "appType"
+        FROM
+            sys_role_resource a
+        LEFT JOIN sys_role b ON a.role_id = b.id
+        LEFT JOIN sys_application c ON a.app_id = c.id
+        LEFT JOIN sys_resource d ON a.resource_id = d.id
+        WHERE
+            b.del = FALSE AND c.del = FALSE
+        <if test="params.projectId!=null">
+            and a.project_id = #{params.projectId}
+        </if>
+        <if test="params.appId!=null">
+            and a.app_id = #{params.appId}
+        </if>
+        <if test="params.roleId!=null">
+            and a.role_id = #{params.roleId}
+        </if>
+    </select>
+
+    <select id="queryRolePowerApp" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysRoleAppEntity">
+        SELECT
+            a.id,
+            a.role_id,
+            b.role_name AS "roleName",
+            a.app_id,
+            c.app_name AS "appName",
+            c.app_type as "appType"
+        FROM
+            sys_role_app a
+        LEFT JOIN sys_role b ON a.role_id = b.id
+        LEFT JOIN sys_application c ON a.app_id = c.id
+        WHERE
+            b.del = FALSE AND c.del = FALSE
+        <if test="params.projectId!=null">
+            and a.project_id = #{params.projectId}
+        </if>
+        <if test="params.appId!=null">
+            and a.app_id = #{params.appId}
+        </if>
+        <if test="params.roleId!=null">
+            and a.role_id = #{params.roleId}
+        </if>
+        <if test="params.appCode!=null">
+            and c.app_code = #{params.appCode}
+        </if>
+    </select>
+
+    <select id="queryProjectApp" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysProjectApp">
+        SELECT
+            a.*,b.app_name as "appName",b.app_type as "appType"
+        FROM sys_project_app a
+            left join sys_application b on a.app_id = b.id
+        where b.del = false
+        <if test="params.projectId!=null">
+            and a.project_id = #{params.projectId}
+        </if>
+    </select>
+
+    <select id="queryRoleByAppIds"  resultType="java.util.Map">
+        SELECT role.id,role.role_name as name,role.role_code code,ra.app_id "appId",
+               null as "userId", null as "realName" FROM sys_role role
+               LEFT JOIN sys_role_app ra on role.id = ra.role_id
+        WHERE role.del =false
+        and ra.project_id = #{projectId}
+        and ra.app_id in
+        <foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <delete id="deleteByRoleId">
+        delete from ${tableName} where  role_id = #{roleId}
+    </delete>
+</mapper>

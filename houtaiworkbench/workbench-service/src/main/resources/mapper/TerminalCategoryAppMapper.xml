@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.workbench.dao.terminal.TerminalCategoryAppDao" >
+    <resultMap id="baseResultMap" type="com.geek.workbench.entity.terminal.TerminalCategoryAppEntity">
+
+    </resultMap>
+
+    <delete id="deleteByExample" parameterType="java.util.Map">
+        delete from
+            terminal_category_app
+            where
+            category_code = #{params.categoryCode}
+            <if test="params.configId != null">
+                and app_config_id = #{params.configId}
+            </if>
+    </delete>
+</mapper>
