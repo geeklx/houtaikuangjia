@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.workbench.dao.application.ApplicationOwnerDao" >
+    <resultMap id="baseResultMap" type="com.geek.workbench.entity.application.ApplicationOwnerEntity">
+        <result column="terminal_id" property="terminalId" jdbcType="BIGINT"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+    </resultMap>
+    <select id="queryMyApp" resultMap="baseResultMap" parameterType="java.util.Map">
+            select appowner.* from terminal_application_config config
+            left join application_owner appowner
+            on  config.app_id= appowner.app_id
+       where
+            config.status='2'
+        <if test="params.terminalId != null">
+            and config.terminal_id =#{params.terminalId}
+        </if>
+        <if test="params.userId != null">
+            and appowner.user_id= #{params.userId}
+        </if>
+    </select>
+</mapper>

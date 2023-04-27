@@ -1,0 +1,80 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.system.support.system.dao.sys.SysResourceDao">
+    <resultMap id="baseResultMap" type="com.geek.system.support.system.vo.SysResourceMenuVo">
+        <id column="id" property="menuId" jdbcType="BIGINT"/>
+        <result column="menu_name" property="menuName" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR"/>
+        <result column="num" property="orderNum" jdbcType="INTEGER"/>
+        <result column="path" property="path" jdbcType="VARCHAR"/>
+        <result column="component" property="component" jdbcType="VARCHAR"/>
+        <result column="menu_type" property="menuType" jdbcType="VARCHAR"/>
+        <result column="icon" property="icon" jdbcType="VARCHAR"/>
+        <result column="redirect" property="redirect" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="app_id" property="appId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="basicMap" type="com.geek.system.support.system.entity.sys.SysResourceEntity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="menu_name" property="menuName" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR"/>
+        <result column="num" property="num" jdbcType="INTEGER"/>
+        <result column="path" property="path" jdbcType="VARCHAR"/>
+        <result column="component" property="component" jdbcType="VARCHAR"/>
+        <result column="menu_type" property="menuType" jdbcType="VARCHAR"/>
+        <result column="icon" property="icon" jdbcType="VARCHAR"/>
+        <result column="redirect" property="redirect" jdbcType="VARCHAR"/>
+        <result column="parent_name" property="parentName" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="selectByUserIdAndAppCode"  resultMap="baseResultMap" parameterType="java.util.Map">
+        SELECT resource.* FROM sys_role_resource role
+        LEFT JOIN sys_resource resource ON role.resource_id = resource.id
+        LEFT JOIN sys_application app ON resource.app_id = app.id
+
+        WHERE app.app_code = #{params.appCode} and role.role_id =  #{params.roleId}
+        order by resource.num asc,resource.create_time asc
+    </select>
+
+    <select id="selectAppByAppCodeAndRole"  resultType="java.lang.Long" parameterType="java.util.Map">
+        SELECT role.resource_id as "appId" FROM sys_role_resource role
+        LEFT JOIN sys_application app ON role.app_id = app.id
+
+        WHERE app.app_code = #{params.appCode} and role.role_id =  #{params.roleId}
+    </select>
+
+    <select id="selectUserResource"  resultMap="baseResultMap" parameterType="java.util.Map">
+        SELECT resource.* FROM sys_user_resource u
+        LEFT JOIN sys_resource resource on u.resource_id = resource.id
+        LEFT JOIN sys_application app ON resource.app_id = app.id
+        WHERE app.app_code = #{params.appCode} and u.user_id = #{params.userId}
+        <if test="params.roleId==null">
+        and u.role_id ISNULL
+        </if>
+        <if test="params.roleId!=null ">
+            and u.role_id =  #{params.roleId}
+        </if>
+        order by resource.num asc,resource.create_time asc
+    </select>
+
+    <select id="queryPage" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysResourceEntity">
+        SELECT resource.*,app.app_name FROM sys_resource resource
+        LEFT JOIN sys_application app on resource.app_id = app.id
+        where  app.del = false
+        <if test="params.appId!=null and params.appId!=''">
+            and resource.app_id = #{params.appId}
+        </if>
+        <if test="params.menuName!=null and params.menuName!=''">
+            and resource.menu_name like '%${params.menuName}%'
+        </if>
+        order by resource.num
+    </select>
+
+    <select id="queryById" parameterType="java.util.Map" resultMap="basicMap">
+        SELECT resource.*,parent.menu_name as parent_name FROM sys_resource resource
+        LEFT JOIN sys_resource parent on resource.parent_id = parent.id
+        where  resource.id =  #{params.id}
+    </select>
+
+</mapper>

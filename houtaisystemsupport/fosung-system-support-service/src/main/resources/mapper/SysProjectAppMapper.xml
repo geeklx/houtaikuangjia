@@ -1,0 +1,11 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.system.support.system.dao.sys.SysProjectAppDao">
+
+    <select id="queryInfo" parameterType="java.util.Map" resultType="com.geek.system.support.system.entity.sys.SysProjectApp">
+        select
+            a.*,b.project_name as "projectName"
+        from sys_project_app a
+            left join sys_project b on a.project_id = b.id
+        where b.del = false and a.app_id = #{params.appId}
+    </select>
+</mapper>

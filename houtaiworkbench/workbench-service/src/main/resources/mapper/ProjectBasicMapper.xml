@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.workbench.dao.project.ProjectBasicDao" >
+    <resultMap id="baseResultMap" type="com.geek.workbench.entity.project.ProjectBasicEntity">
+
+    </resultMap>
+
+    <!--  查询全部项目为选项信息  -->
+    <select id="queryAllProjectOption"  resultType="java.util.HashMap" parameterType="java.util.Map">
+        SELECT
+          id as "dictValue",
+          project_name as "dictLabel"
+        FROM project_basic
+        WHERE
+            del = false
+            AND status = '${@com.fosung.workbench.common.ProjectStatusEnum@RELEASE.value}'
+    </select>
+
+    <!--  查询当前用户项目为选项信息  -->
+    <select id="queryProjectOption"  resultType="java.util.HashMap" parameterType="java.lang.String">
+        SELECT
+          project.id as "dictValue",
+          project.project_name as "dictLabel"
+        FROM project_basic project left join project_manager manager
+		on project.id = manager.project_id
+        WHERE
+            project.del = false
+			AND project.status = '${@com.fosung.workbench.common.ProjectStatusEnum@RELEASE.value}'
+			AND manager.del = false
+            AND manager.user_id = #{userId}
+    </select>
+
+    <!--  查询根据项目id查询项目信息  -->
+    <select id="queryProjectInfoByIds" parameterType="java.util.List" resultType="com.geek.workbench.entity.project.ProjectBasicEntity">
+
+        select id , project_code  as "projectCode" , project_name as "projectName" from project_basic
+        where id in
+        <foreach collection="list" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+        order by field (
+                id,
+            <foreach collection="list" item="id" separator=",">
+                #{id}
+            </foreach>
+        )
+    </select>
+
+</mapper>

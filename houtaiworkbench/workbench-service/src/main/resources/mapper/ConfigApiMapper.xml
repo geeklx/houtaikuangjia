@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.workbench.dao.config.ConfigApiDao" >
+
+    <!--  查询接口分组信息通过接口分类  -->
+    <select id="queryGroupInfoAllByApiCategory" resultType="java.util.Map" parameterType="java.lang.String">
+        SELECT
+            api_group_name as "name"
+            ,id as "apiGroupId"
+            , api_category as "apiCategory"
+            , api_type as "apiType"
+            , remark
+        FROM
+            "config_api_group"
+        WHERE
+            api_category = #{apiCategory}
+    </select>
+
+    <!--  根据api组修改接口为无效接口  -->
+    <update id="updateAllByApiGroupId" parameterType="java.lang.Long">
+        update config_api set del = true where api_group_id = #{apiGroupId}
+    </update>
+
+    <!--  根据api组删除绑定的终端接口  -->
+    <delete id="deleteApiBindInfo" parameterType="java.lang.Long">
+        delete from terminal_api_config where
+        bind_id in ( select id from config_api where api_group_id = #{apiGroupId} )
+    </delete>
+    <select id="queryTree" resultType="java.util.Map" parameterType="java.lang.String">
+        SELECT  a.terminal_id,a.bind_category,a.bind_type,
+        c.api_code,c.api_address  FROM terminal_config_api a
+        LEFT JOIN config_api c on a.bind_group_id = c.api_group_id where
+        c.del = false
+        <if test="params.terminalId != null">
+            and a.terminal_id = #{params.terminalId}
+        </if>
+        <if test="params.bindCategory != null">
+            and a.bind_category = #{params.bindCategory}
+        </if>
+        <if test="params.bindType != null">
+            and a.bind_type = #{params.bindType}
+        </if>
+        <if test="params.apiCode != null">
+            and c.api_code = #{params.apiCode}
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,87 @@
+app:
+  weather_service_url: http://wthrcdn.etouch.cn/weather_mini
+  cloud:
+    ums:
+      url: 127.0.0.1:8083
+  # 部署环境要求可以访问互联网
+
+  appCode: fs-user-project-1641547050881
+  pbs:
+    client:
+      url: http://10.7.211.36:6300/
+      #url: http://10.7.211.110:6300/   #本地登录
+  short:
+    url:
+      numberSenderKey: number_sender_key
+      numberSenderStep: 1
+      repetitionSecond: 600
+      prefix: http://119.188.115.249:5001/gwapi/workbenchserver/api/short/url/
+  # 开启延迟任务
+  delayqueue:
+    enableConsume: true #是否开启延迟队列的消费任 务
+    enableScheduleTask: true #是否开启延迟队列的调 度任务
+    enableScheduleRetryFailTask: true #是否开启对于失 败任务进行重试的调度任务
+  union:
+    search:
+      knowledgeSource: 3522367790851822463
+  mq:
+    producer:
+      type: rocket #消息插件类型(我们用roketMQ)
+      rocket: #生产者配置
+        topic: knowledge_gather
+        namesrvAddr: 10.254.99.78:9876 #mq测试环境服务器地址
+        groupName: video-server #组名
+  gwapi:
+    name: server
+    url: http://10.7.211.36:6200/api
+  dtxz:
+    url: http://t-gw-proxy.xczx-jn.com
+  rpc:
+    accessKey: f16f9f26940523ee
+    accessSecret: ddc88eb541f7a4bb
+    signVersion: V1
+  dao:
+    dataSource:
+      driverClass: com.highgo.jdbc.Driver
+      password: root
+      url: jdbc:highgo://127.0.0.1:5432/fosung_workbench?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+      username: postgres
+    jpa:
+      showSql: true
+  secure:
+    auth:
+      enable: false
+      urlAuths:
+        - filter: anon
+          url: /api/**
+    referer:
+      enable: false
+    sso:
+      enable: false
+      oauth2Configs:
+        - authorizationUri: http://10.254.23.23:8922/sso/oauth/authorize
+          clientAuthenticationMethod: basic
+          clientId: party-branch-ui #cloud-gateway #dp_center_ui
+          clientName: 网关管理端
+          clientSecret: cloud-gateway #dp_center_ui
+          frontPageUrl: http://127.0.0.1:9528
+          registrationId: dt
+          scope: edu.read
+          redirectUriTemplate: http://129.0.0.1:9005/oauth2/login
+          tokenUri: http://10.254.23.23:8922/sso/oauth/token
+          userInfoUri: http://10.254.23.23:8922/sso/user/principal
+  session:
+    cookieSessionEncode: false
+
+  globalParams:
+    umsUrl: http://10.7.211.201:5001
+spring:
+  redis:
+    database: '8'
+    host: 127.0.0.1
+    port: 6379
+    #password: root
+    timeout: 5000
+server:
+  port: 8081
+

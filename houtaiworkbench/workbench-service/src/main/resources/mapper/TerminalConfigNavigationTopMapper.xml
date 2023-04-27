@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.workbench.dao.microcoder.TerminalConfigNavigationTopDao" >
+    <resultMap id="baseResultMap" type="com.geek.workbench.entity.microcoder.TerminalConfigNavigationTop">
+
+    </resultMap>
+
+    <!--  查询顶部导航信息  -->
+    <select id="queryInfo" resultType="java.util.Map" parameterType="com.geek.workbench.entity.microcoder.TerminalConfigNavigationTop">
+        SELECT
+            top.ID,
+            top.area,
+            top.navigation_name as "topNavigationName",
+            btm.ID as "btmId",
+            btm.navigation_name as "btmNavigationName"
+        FROM
+            terminal_config_navigation_top top
+            LEFT JOIN terminal_config_navigation_btm btm ON top.navigation_btm_id = btm.ID
+        WHERE
+            top.del = FALSE
+            AND btm.del = FALSE
+            AND top.terminal_id = #{param.terminalId}
+            AND top.area = #{param.area}
+            <if test="param.navigationBtmId != null">
+                AND top.navigation_btm_id = #{param.navigationBtmId}
+            </if>
+    </select>
+
+    <!--  查询顶部导航信息  -->
+    <select id="queryInfoPage" resultType="java.util.Map" parameterType="com.geek.workbench.entity.microcoder.TerminalConfigNavigationTop">
+        SELECT
+        top.ID,
+        top.area,
+        top.navigation_name as "topNavigationName",
+        btm.ID as "btmId",
+        btm.navigation_name as "btmNavigationName"
+        FROM
+        terminal_config_navigation_top top
+        LEFT JOIN terminal_config_navigation_btm btm ON top.navigation_btm_id = btm.ID
+        WHERE
+        top.del = FALSE
+        AND btm.del = FALSE
+        AND top.terminal_id = #{param.terminalId}
+        AND top.area = #{param.area}
+        <if test="param.navigationBtmId != null">
+            AND top.navigation_btm_id = #{param.navigationBtmId}
+        </if>
+    </select>
+
+    <!-- 将顶部导航关联的菜单置位无效 -->
+    <update id="deleteAllTopMenu" parameterType="java.lang.Long">
+        update terminal_config_menu_top set del = true where navigation_id = #{id}
+    </update>
+
+    <!--  修改全部菜单  -->
+    <update id="updateAllTopMenu" parameterType="com.geek.workbench.entity.microcoder.TerminalConfigNavigationTop">
+        update terminal_config_menu_top
+        <trim prefix="set" suffixOverrides=",">
+            <if test="param.area != null">
+                area = #{param.area},
+            </if>
+            <if test="param.navigationBtmId != null">
+                navigation_btm_id = #{param.navigationBtmId},
+            </if>
+        </trim>
+        where navigation_id = #{param.id}
+    </update>
+    <select id="queryAreaList" resultType="java.util.Map" parameterType="com.geek.workbench.entity.microcoder.TerminalConfigNavigationTop">
+      select distinct  area from terminal_config_navigation_top
+    </select>
+</mapper>

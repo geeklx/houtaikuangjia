@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.workbench.dao.terminal.TerminalBasicDao" >
+    <resultMap id="baseResultMap" type="com.geek.workbench.entity.terminal.TerminalBasicEntity">
+        <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="queryTerminalBasicInfoByPage"  resultMap="baseResultMap" parameterType="com.geek.workbench.dto.terminal.TerminalBasicDto">
+        SELECT
+            terminal.id,
+            terminal.terminal_name,
+            terminal.terminal_code,
+            terminal.terminal_type,
+            terminal.terminal_logo,
+            terminal.package_name,
+            terminal.remark,
+            terminal.create_time,
+            terminal.project_id,
+            project.project_name
+        FROM
+            terminal_basic terminal
+        LEFT JOIN project_basic project ON terminal.project_id = project.id
+        WHERE terminal.del = false
+        <if test="params.projectId!=null">
+            and terminal.project_id = #{params.projectId}
+        </if>
+        <if test="params.projectList!=null and params.projectList.size() > 0 ">
+            and terminal.project_id in
+            <foreach collection="params.projectList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="params.id!=null">
+            and terminal.id = #{params.id}
+        </if>
+        <if test="params.terminalType!=null">
+            and terminal.terminal_type = #{params.terminalType}
+        </if>
+        <if test="params.terminalCode!=null and params.terminalCode != ''">
+            and terminal.terminal_code = #{params.terminalCode}
+        </if>
+        <if test="params.startTime!=null">
+            and terminal.create_time &gt;= #{params.startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="params.endTime!=null">
+            and terminal.create_time &lt;= #{params.endTime,jdbcType=TIMESTAMP}
+        </if>
+        order by terminal.create_time desc
+    </select>
+    <!--终端下拉框-->
+    <select id="queryTerminalOptions"  resultMap="baseResultMap" parameterType="java.util.Map">
+        SELECT
+        terminal.terminal_name,
+        terminal.terminal_code,
+        terminal.id
+        FROM
+        terminal_basic terminal
+        WHERE terminal.del = false
+        <if test="params.projectId!=null">
+            and terminal.project_id = #{params.projectId}
+        </if>
+        <if test="params.projectList!=null and params.projectList.size() > 0">
+            and terminal.project_id in
+            <foreach collection="params.projectList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+    <update id="deleteAllByTerminal" parameterType="java.util.Map">
+        update
+            ${params.tablename}
+        set del = true
+        where
+            terminal_id = #{params.terminalId}
+    </update>
+    <select id="queryProjectTree" resultMap="baseResultMap">
+        SELECT
+            pro.id as "projectId",
+            pro.project_name as "projectName"
+        FROM
+           project_basic pro
+        where pro.del = false
+    </select>
+    <select id="queryTerminalTree" resultMap="baseResultMap" parameterType="com.geek.workbench.entity.terminal.TerminalBasicEntity">
+        SELECT
+            ter.id as "terminalId",
+            ter.terminal_name as "terminalName"
+        FROM
+           terminal_basic ter
+        where ter.del = false and ter.project_id = #{params.projectId}
+    </select>
+</mapper>

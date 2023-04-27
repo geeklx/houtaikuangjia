@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.geek.houtai</groupId>
+        <artifactId>houtaikuangjia</artifactId>
+        <version>2.0.2-SNAPSHOT</version>
+    </parent>
+    <artifactId>workbench-service</artifactId>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.fosung.infrastructure</groupId>
+            <artifactId>infrastructure-service</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.geek.houtai</groupId>
+            <artifactId>fosung-system-support-pbs</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.geek.houtai</groupId>
+            <artifactId>workbench-facade</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+<!--        第三方-->
+        <dependency>
+            <groupId>com.fosung.framework</groupId>
+            <artifactId>framework-web</artifactId>
+            <version>0.7-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--    MQ    -->
+        <dependency>
+            <groupId>com.fosung.framework</groupId>
+            <artifactId>framework-mq</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+
+        <!--    统一搜索    -->
+        <dependency>
+            <groupId>com.fosung.unionsearch</groupId>
+            <artifactId>search-facade-sdk</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--    统一消息    -->
+        <dependency>
+            <groupId>com.fosung.ums</groupId>
+            <artifactId>ums-rest-api-sdk</artifactId>
+            <version>2.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--  引入延迟任务  -->
+        <dependency>
+            <groupId>com.fosung.framework</groupId>
+            <artifactId>framework-delaytask</artifactId>
+            <version>0.7-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fosung.ums</groupId>
+            <artifactId>ums-rest-api-sdk</artifactId>
+            <version>2.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>

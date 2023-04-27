@@ -1,0 +1,52 @@
+app:
+  rocketmq:
+    sendUrl: http://t-repair.xczx-jn.com/api/cloud/repair/send
+  pbs:
+    client:
+      url: http://172.18.223.229:8999/
+  passwordEncoder: default
+  globalParams:
+    loginUrl: /login
+    ossUrl : http://119.188.115.252:8090/api/oss/resource-handle/upload
+    shelvesUrl: http://119.188.115.252:8090/resource-handle/uploads/2022-04-11/file/授权模板.xlsx
+    headImgUrl: http://119.188.115.252:8090/resource-handle/uploads/image/2022-02-14/3532192544572062147.png
+  dao:
+    dataSource:
+      driverClass: com.highgo.jdbc.Driver
+      password: 123qwe
+      url: jdbc:highgo://10.7.201.181:5432/fosung_system-v2?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+      username: postgres
+#      password: Fosung@501
+#      url: jdbc:highgo://10.7.211.104:5432/fosung_system_fc?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+#      username: postgres
+#      password: Fosung@501
+#      url: jdbc:highgo://10.7.211.35:5866/fosung_system_xctest?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+#      username: highgo
+    jpa:
+      showSql: 'true'
+  gwapi:
+    name: server
+    url: http://10.7.211.36:6251
+  secure:
+    auth:
+      enable: true
+      urlAuths:
+      - filter: anon
+        url: /**
+    referer:
+      enable: 'false'
+    sso:
+      enable: 'false'
+  session:
+    cookieSessionEncode: 'false'
+  code: fs-user-sys-1640066493611
+  faceUsers: http://t-gw-proxy.xczx-jn.com/cloud_meeting/meeting/out/faceUsers
+spring:
+  redis:
+    database: '1'
+    host: 10.7.201.181
+    port: '6379'
+logging:
+  level:
+    ###打印mybatis日志
+    com.fosung.system.support.system.dao.sys : debug
