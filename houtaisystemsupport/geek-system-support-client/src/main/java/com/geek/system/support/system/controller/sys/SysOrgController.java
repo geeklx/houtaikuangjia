@@ -79,7 +79,7 @@ public class SysOrgController extends SysIBaseController {
      * 根据父id查询组织树
      *
      * @param sysOrgDto, dataType
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author liuke
      * @date 2022/2/7 16:00
      */

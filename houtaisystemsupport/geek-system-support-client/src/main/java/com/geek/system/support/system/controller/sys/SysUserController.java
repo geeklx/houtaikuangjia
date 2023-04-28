@@ -418,7 +418,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 校验身份证是否合法
      * @param dto
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2022/1/27 15:05
      **/
@@ -458,7 +458,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 批量启动/禁用
      * @param sysUser
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/11/25 10:22
      **/
@@ -480,7 +480,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 用户管理获取管理范围
      * @param sysUserRoleScopDto
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/12/4 15:25
      **/
@@ -499,7 +499,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 用户绑定管理范围
      * @param sysUserRoleScopDto
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/12/6 9:16
      **/
@@ -513,7 +513,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 重置密码
      * @param sysUser
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/11/30 16:39
      **/
@@ -530,7 +530,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 查询用户管理角色范围
      * @param sysRoleDto
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/12/2 17:01
      **/
@@ -552,7 +552,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 查询用户管理角色范围
      * @param sysRoleDto
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/12/2 17:01
      **/
@@ -575,7 +575,7 @@ public class SysUserController extends SysIBaseController {
      * @param sysUserRoleEntity
      * @author liuke
      * @date 2021/4/15 16:25
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @RequestMapping("bindrole")
     public ResponseParam userBindRole(@RequestBody SysUserRoleEntity sysUserRoleEntity){
@@ -588,7 +588,7 @@ public class SysUserController extends SysIBaseController {
      * @param list
      * @author liuke
      * @date 2021/4/15 16:31
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @RequestMapping("removerole")
     public ResponseParam userReBindRole(@RequestBody List<AppBaseIdParam> list){
@@ -604,7 +604,7 @@ public class SysUserController extends SysIBaseController {
      * @param sysUserRoleEntitys
      * @author liuke
      * @date 2021/4/16 9:36
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @RequestMapping("rebindrole")
     public ResponseParam userBindRole(@RequestBody List<SysUserRoleEntity> sysUserRoleEntitys){
@@ -621,7 +621,7 @@ public class SysUserController extends SysIBaseController {
      * @param userId
      * @author liuke
      * @date 2021/4/19 14:21
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @PostMapping("getuserdetails")
     public ResponseParam getUserDetail(@RequestParam("userId") Long userId){
@@ -643,7 +643,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 保存授权
      * @param sysUserRoleScopDto
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/12/16 17:22
      **/
@@ -666,7 +666,7 @@ public class SysUserController extends SysIBaseController {
      * 描述: 批量授权
      * @param projectId
      * @param file
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2022/1/17 14:23
      **/
@@ -710,7 +710,7 @@ public class SysUserController extends SysIBaseController {
      * @param file
      * @author liuke
      * @date 2022/3/28 16:19
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @PostMapping("batch/save/users")
     public ResponseParam batchSaveShelves(@RequestParam("file") MultipartFile file) throws Exception {
@@ -724,7 +724,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 批量撤销授权
      * @param sysUserRoleScopDto
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2022/1/17 15:36
      **/
@@ -741,7 +741,7 @@ public class SysUserController extends SysIBaseController {
     /**
      * 描述: 获取城市下拉框
      * @param
-     * @return java.util.List<com.fosung.system.support.system.entity.sys.SysCityEntity>
+     * @return java.util.List<com.geek.system.support.system.entity.sys.SysCityEntity>
      * @author fuhao
      * @date 2022/1/14 11:16
      **/
@@ -768,7 +768,7 @@ public class SysUserController extends SysIBaseController {
      * 校验党员
      * @author liuke
      * @date 2022/2/8 14:20
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @PostMapping("checkuser")
     public ResponseParam CheckDtUser(@RequestParam("idCard") String idCard,@RequestParam(value = "projectId" ,defaultValue = "0",required = false) Long projectId ) {

@@ -15,7 +15,7 @@ public interface SystemRoleApi {
      * 获取所有角色列表
      * @author liuke
      * @date 2021/11/1 14:19
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @RequestMapping("list")
     ResponseParam getRole() ;
@@ -25,7 +25,7 @@ public interface SystemRoleApi {
      * 查询角色下的人员
      * @author gaojian
      * @date 2021/11/1 14:19
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @RequestMapping("list/user")
     ResponseParam getRoleUser(@RequestParam("appId") Long appId, @RequestParam("roleCode") String roleCode) ;
@@ -36,7 +36,7 @@ public interface SystemRoleApi {
      * @param appId
      * @author liuke
      * @date 2021/11/1 14:26
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @RequestMapping("list/by/app")
     ResponseParam getRoleByApp(Long appId);

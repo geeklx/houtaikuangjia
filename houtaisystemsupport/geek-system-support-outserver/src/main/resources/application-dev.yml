@@ -18,6 +18,9 @@ app:
 #      username: highgo
     jpa:
       showSql: 'true'
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
   secure:
     auth:
       enable: 'false'
@@ -37,6 +40,6 @@ spring:
     port: '6379'
 logging:
   level:
-    com.fosung.system.support.system.dao: debug
+    com.geek.system.support.system.dao: debug
 server:
   port: 6300

@@ -84,7 +84,7 @@ public interface SysUserService extends AppBaseDataService<SysUserEntity, Long> 
      * 描述: 查询资源授权绑定角色
      *
      * @param sysRoleDto
-     * @return com.fosung.system.support.system.entity.sys.SysRoleScopEntity
+     * @return com.geek.system.support.system.entity.sys.SysRoleScopEntity
      * @author fuhao
      * @date 2021/12/20 9:42
      **/
@@ -115,7 +115,7 @@ public interface SysUserService extends AppBaseDataService<SysUserEntity, Long> 
      * 查询会话共享用户信息
      *
      * @param idCardHash
-     * @return com.fosung.framework.web.mvc.config.session.common.AppUserInfo
+     * @return com.geek.framework.web.mvc.config.session.common.AppUserInfo
      * @author liuke
      * @date 2021/12/15 10:16
      */
@@ -135,7 +135,7 @@ public interface SysUserService extends AppBaseDataService<SysUserEntity, Long> 
      * 根据角色编码查询用户
      *
      * @param searchParam
-     * @return java.util.List<com.fosung.system.support.system.entity.sys.SysUserEntity>
+     * @return java.util.List<com.geek.system.support.system.entity.sys.SysUserEntity>
      * @author liuke
      * @date 2022/1/13 11:38
      */
@@ -145,7 +145,7 @@ public interface SysUserService extends AppBaseDataService<SysUserEntity, Long> 
      * 描述: 获取城市下拉框
      *
      * @param
-     * @return java.util.List<com.fosung.system.support.system.entity.sys.SysCityEntity>
+     * @return java.util.List<com.geek.system.support.system.entity.sys.SysCityEntity>
      * @author fuhao
      * @date 2022/1/14 11:16
      **/

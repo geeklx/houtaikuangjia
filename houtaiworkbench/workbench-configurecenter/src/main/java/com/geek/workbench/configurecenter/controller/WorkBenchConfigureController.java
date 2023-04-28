@@ -177,7 +177,7 @@ public class WorkBenchConfigureController extends AppIBaseController{
      * @param httpServletRequest
      * @author liuke
      * @date 2021/10/22 14:34
-     * @return com.fosung.workbench.entity.terminal.TerminalBasicEntity
+     * @return com.geek.workbench.entity.terminal.TerminalBasicEntity
      */
     public TerminalBasicEntity getTerminal(AppSearchParamDto shelvesSearchParamDto, HttpServletRequest httpServletRequest){
         AppHeaderResolution.HeaderMessage headerMessage = AppHeaderResolution.resolutionHeader(httpServletRequest);

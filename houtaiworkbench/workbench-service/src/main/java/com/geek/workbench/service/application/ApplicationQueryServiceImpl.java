@@ -239,7 +239,7 @@ public class ApplicationQueryServiceImpl implements ApplicationQueryService{
      * @createDate: 2021/11/2 18:40
      * @author: gaojian
      * @modify:
-     * @return: com.fosung.framework.web.http.ResponseParam
+     * @return: com.geek.framework.web.http.ResponseParam
      */
     @Override
     public ResponseParam queryOrgan(JSONObject jsonObject) {

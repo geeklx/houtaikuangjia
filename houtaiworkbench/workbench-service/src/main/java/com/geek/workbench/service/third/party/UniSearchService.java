@@ -25,7 +25,7 @@ public class UniSearchService implements ThirdPartyService{
      * @createDate: 2022/2/28 16:47
      * @author: gaojian
      * @modify:
-     * @return: com.fosung.workbench.dto.terminal.TerminalThirdPartyCommonConfigDto
+     * @return: com.geek.workbench.dto.terminal.TerminalThirdPartyCommonConfigDto
      */
     @Override
     public TerminalThirdPartyCommonConfigDto getConfigInfo(JSONObject jsonObject) {

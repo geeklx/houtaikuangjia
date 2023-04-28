@@ -77,7 +77,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchAllAppNoregion(AppSearchParamDto shelvesSearchParamDto, Set<Long> ids){
         //查询不包含本地应用的所有应用
@@ -94,7 +94,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author 高健
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchAllAppNoregionAndRoutine(AppSearchParamDto shelvesSearchParamDto,Set<Long> ids){
         //查询不包含本地应用的所有应用
@@ -111,7 +111,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author 高健
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchAllAppNoregionAnd(AppSearchParamDto shelvesSearchParamDto,Set<Long> ids){
         //查询不包含本地应用的所有应用
@@ -128,7 +128,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<TerminalApplicationConfigEntity> searchAllApp1(AppSearchParamDto shelvesSearchParamDto,Set<Long> ids){
         //查询终端下所有应用
@@ -145,7 +145,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchAllAppNoShelvesNoRegion(AppSearchParamDto shelvesSearchParamDto){
         //获取所有不含本地应用之外的其他应用
@@ -162,7 +162,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchMyApp(AppSearchParamDto shelvesSearchParamDto,Set<Long> ids){
         List<AppInfo> infos = Lists.newArrayList();
@@ -185,7 +185,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public MyAppList searchMyAppEdit(AppSearchParamDto shelvesSearchParamDto){
         //获取所有授权id
@@ -210,7 +210,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      *
      * @author liuke
      * @date 2021/10/26 11:11
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalConfigCategoryEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalConfigCategoryEntity>
      */
     public List<AppInfo> getTerminalTypeCategory(AppSearchParamDto shelvesSearchParamDto){
         //查询所有分类
@@ -235,7 +235,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> getMyAndAllApp(AppSearchParamDto shelvesSearchParamDto){
         //获取授权范围
@@ -303,7 +303,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchRegionalApp(AppSearchParamDto shelvesSearchParamDto,Set<Long> ids){
         List<AppInfo> infos = Lists.newArrayList();
@@ -325,7 +325,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchRoutineApp(AppSearchParamDto shelvesSearchParamDto,Set<Long> ids){
         List<AppInfo> infos = Lists.newArrayList();
@@ -347,7 +347,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> getRegionalApp(AppSearchParamDto shelvesSearchParamDto){
         //获取所有授权信息
@@ -387,7 +387,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> getMyAppAllEdit(AppSearchParamDto shelvesSearchParamDto){
         //获取所有授权范围
@@ -431,7 +431,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> getSingleRegionalApp(AppSearchParamDto shelvesSearchParamDto){
         Map<String,Object> map = Maps.newHashMap();
@@ -449,7 +449,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> getMyAppRegionalEdit(AppSearchParamDto shelvesSearchParamDto){
         //获取所有授权的应用id
@@ -499,7 +499,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> searchDtFirstAppList(AppSearchParamDto shelvesSearchParamDto){
         //获取首页配置显示多少个
@@ -540,7 +540,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<TerminalConfigCategoryEntity> searchAllCategoryApp(AppSearchParamDto shelvesSearchParamDto,Set<Long> shlvesids, TerminalAppCategoryType... terminalAppCategoryTypes){
 
@@ -560,7 +560,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<TerminalConfigCategoryEntity> searchAllCategoryAppNoShelves(AppSearchParamDto shelvesSearchParamDto, TerminalAppCategoryType... terminalAppCategoryTypes){
 
@@ -581,7 +581,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<TerminalConfigCategoryEntity> searchAllCategory(AppSearchParamDto shelvesSearchParamDto, TerminalAppCategoryType... terminalAppCategoryTypes){
         //获取分类
@@ -685,7 +685,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param terminalId
      * @author liuke
      * @date 2021/10/25 20:29
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public List<TerminalApplicationConfigEntity> getCateAppsByCode(List<TerminalApplicationConfigEntity> applicationConfigEntities,Long terminalId,String code){
         //获取分类下所有的应用id
@@ -775,7 +775,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param terminalApplicationConfigEntity
      * @author liuke
      * @date 2021/10/18 10:05
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public String getPackageAndConfig(TerminalApplicationConfigEntity terminalApplicationConfigEntity){
         try {
@@ -829,7 +829,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 19:17
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> getAppInfos(List<TerminalApplicationConfigEntity> applicationConfigEntities,AppSearchParamDto shelvesSearchParamDto){
         List<AppInfo> infos = Lists.newArrayList();
@@ -859,7 +859,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 19:17
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<MyAppBasic> getMyappList(List<TerminalApplicationConfigEntity> applicationConfigEntities,AppSearchParamDto shelvesSearchParamDto){
         List<MyAppBasic> infos = Lists.newArrayList();
@@ -935,7 +935,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param applicationConfigEntity
      * @author liuke
      * @date 2021/10/18 10:05
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public String getAppInfoUrl(TerminalApplicationConfigEntity applicationConfigEntity){
         String url = "";
@@ -973,7 +973,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param terminalId
      * @author liuke
      * @date 2021/10/18 10:05
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public Set<Long> getCacheAppByTerminal(Long terminalId,String code){
         Set<Long> ids = Sets.newHashSet();
@@ -1059,7 +1059,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author 高健
      * @date 2021/10/18 10:05
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public List<TerminalApplicationConfigEntity> getCacheAppNoregionAndRoutine(AppSearchParamDto shelvesSearchParamDto){
         List<TerminalApplicationConfigEntity> ids = Lists.newArrayList();
@@ -1077,7 +1077,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/18 10:05
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public List<TerminalApplicationConfigEntity> getCacheAppNoregion(AppSearchParamDto shelvesSearchParamDto){
         List<TerminalApplicationConfigEntity> ids = Lists.newArrayList();
@@ -1095,7 +1095,7 @@ public class AppSearchV2ServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author 高健
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> queryCategoryApp(AppSearchParamDto shelvesSearchParamDto){
 

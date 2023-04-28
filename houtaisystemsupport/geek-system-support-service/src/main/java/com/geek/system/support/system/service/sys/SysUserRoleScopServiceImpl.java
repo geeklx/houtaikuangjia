@@ -56,7 +56,7 @@ public class SysUserRoleScopServiceImpl extends AppJPABaseDataServiceImpl<SysUse
 	/**
 	 * 描述: 查询全部用户绑定的范围
 	 * @param searchBindParam
-	 * @return java.util.List<com.fosung.system.support.system.entity.sys.SysUserRoleScopEntity>
+	 * @return java.util.List<com.geek.system.support.system.entity.sys.SysUserRoleScopEntity>
 	 * @author fuhao
 	 * @date 2021/12/6 9:26
 	 **/

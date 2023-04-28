@@ -17,7 +17,7 @@ public interface ApplicationConfigHtmlDao extends AppJPABaseDao<ApplicationConfi
      * @author: gaojian
      * @modify:
      * @param appId
-     * @return: com.fosung.workbench.entity.application.ApplicationConfigAndroidEntity
+     * @return: com.geek.workbench.entity.application.ApplicationConfigAndroidEntity
      */
     ApplicationConfigHtmlEntity queryFirstByAppIdOrderByCreateDatetime(Long appId);
 }

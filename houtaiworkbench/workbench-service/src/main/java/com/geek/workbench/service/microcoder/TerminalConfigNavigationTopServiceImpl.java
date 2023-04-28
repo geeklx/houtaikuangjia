@@ -213,7 +213,7 @@ public class TerminalConfigNavigationTopServiceImpl extends AppJPABaseDataServic
 	 * @param dto
 	 * @author lhm
 	 * @date 2021/11/16 10:05
-	 * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+	 * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
 	 */
 	@Override
 	public List<TerminalConfigNavigationTop> getNavigationTop(TerminalConfigMenuTopDto dto){

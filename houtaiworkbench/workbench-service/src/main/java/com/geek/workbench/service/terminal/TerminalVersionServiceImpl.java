@@ -353,7 +353,7 @@ public class TerminalVersionServiceImpl extends AppJPABaseDataServiceImpl<Termin
 	 * @param terminalId
 	 * @author liuke
 	 * @date 2021/10/18 10:05
-	 * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+	 * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
 	 */
 	@Override
 	public TerminalVersionEntity getCacheTerminal(String terminalId){
@@ -426,7 +426,7 @@ public class TerminalVersionServiceImpl extends AppJPABaseDataServiceImpl<Termin
 	 * @author: gaojian
 	 * @modify:
 	 * @param
-	 * @return: java.util.List<com.fosung.workbench.entity.terminal.TerminalVersionUpgradeRangeEntity>
+	 * @return: java.util.List<com.geek.workbench.entity.terminal.TerminalVersionUpgradeRangeEntity>
 	 */
 	public List<TerminalVersionUpgradeRangeEntity> getAllUpgradeRange(){
 

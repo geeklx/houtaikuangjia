@@ -26,7 +26,7 @@ public interface ConfigApiDao extends AppJPABaseDao<ConfigApiEntity, Long>{
      * @modify:
      * @param apiCategory
      * @param pageable
-     * @return: com.fosung.framework.dao.config.mybatis.page.MybatisPage<java.util.Map<java.lang.String,java.lang.Object>>
+     * @return: com.geek.framework.dao.config.mybatis.page.MybatisPage<java.util.Map<java.lang.String,java.lang.Object>>
      */
     @MybatisQuery
     MybatisPage<Map<String,Object>> queryGroupInfoAllByApiCategory(@Param("apiCategory")String apiCategory, Pageable pageable);
@@ -60,7 +60,7 @@ public interface ConfigApiDao extends AppJPABaseDao<ConfigApiEntity, Long>{
      * @modify:
      * @param apiGroupId
      * @param apiCode
-     * @return: com.fosung.workbench.entity.config.ConfigApiEntity
+     * @return: com.geek.workbench.entity.config.ConfigApiEntity
      */
     ConfigApiEntity getFirstByApiGroupIdAndApiCode(Long apiGroupId,String apiCode);
     @MybatisQuery

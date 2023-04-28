@@ -71,7 +71,7 @@ public interface ProjectBasicService extends AppBaseDataService<ProjectBasicEnti
      * @author: gaojian
      * @modify:
      * @param list
-     * @return: java.util.List<com.fosung.workbench.entity.project.ProjectBasicEntity>
+     * @return: java.util.List<com.geek.workbench.entity.project.ProjectBasicEntity>
      */
     List<ProjectBasicEntity> queryProjectInfoByIds(List<Long> list);
 	

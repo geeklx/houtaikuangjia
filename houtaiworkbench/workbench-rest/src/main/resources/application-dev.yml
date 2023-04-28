@@ -97,4 +97,4 @@ feign:
     enabled: true
 logging:
   level:
-    com.fosung.workbench.dao: DEBUG
+    com.geek.workbench.dao: DEBUG

@@ -52,7 +52,7 @@ public interface ApplicationBasicService extends AppBaseDataService<ApplicationB
    * @author: gaojian
    * @modify:
    * @param appId
-   * @return: java.util.List<com.fosung.workbench.entity.application.ApplicationBaseConfigEntity>
+   * @return: java.util.List<com.geek.workbench.entity.application.ApplicationBaseConfigEntity>
    */
   List<ApplicationBaseConfigEntity> getApplicationConfig(Long appId);
 
@@ -62,7 +62,7 @@ public interface ApplicationBasicService extends AppBaseDataService<ApplicationB
    * @author: gaojian
    * @modify:
    * @param appId
-   * @return: java.util.List<com.fosung.workbench.entity.application.ApplicationBaseConfigEntity>
+   * @return: java.util.List<com.geek.workbench.entity.application.ApplicationBaseConfigEntity>
    */
   List<ApplicationBaseConfigEntity> getInitApplicationConfig(Long appId);
 

@@ -19,7 +19,7 @@ public interface TerminalBasicService extends AppBaseDataService<TerminalBasicEn
      * 描述: 终端信息分页查询
      * @param terminalBasicDto
      * @param
-     * @return org.springframework.data.domain.Page<com.fosung.workbench.entity.terminal.TerminalBasicEntity>
+     * @return org.springframework.data.domain.Page<com.geek.workbench.entity.terminal.TerminalBasicEntity>
      * @author fuhao
      * @date 2021/10/26 14:31
      **/
@@ -28,7 +28,7 @@ public interface TerminalBasicService extends AppBaseDataService<TerminalBasicEn
     /**
      * 描述: 获取终端下拉框
      * @param searchParam
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalBasicEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalBasicEntity>
      * @author fuhao
      * @date 2021/10/26 14:31
      **/

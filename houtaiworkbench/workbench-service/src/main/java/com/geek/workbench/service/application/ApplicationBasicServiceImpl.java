@@ -235,7 +235,7 @@ public class ApplicationBasicServiceImpl extends AppJPABaseDataServiceImpl<Appli
 	 * @author: gaojian
 	 * @modify:
 	 * @param appId
-	 * @return: java.util.List<com.fosung.workbench.entity.application.ApplicationBaseConfigEntity>
+	 * @return: java.util.List<com.geek.workbench.entity.application.ApplicationBaseConfigEntity>
 	 */
 	@Override
 	public List<ApplicationBaseConfigEntity> getApplicationConfig(Long appId) {
@@ -276,7 +276,7 @@ public class ApplicationBasicServiceImpl extends AppJPABaseDataServiceImpl<Appli
 	 * @createDate: 2021/10/18 16:33
 	 * @author: gaojian
 	 * @modify:
-	 * @return: java.util.List<com.fosung.workbench.entity.application.ApplicationBaseConfigEntity>
+	 * @return: java.util.List<com.geek.workbench.entity.application.ApplicationBaseConfigEntity>
 	 */
 	@Override
 	public List<ApplicationBaseConfigEntity> getInitApplicationConfig(Long appId) {
@@ -371,7 +371,7 @@ public class ApplicationBasicServiceImpl extends AppJPABaseDataServiceImpl<Appli
 	 * @param appId
 	 * @author liuke
 	 * @date 2021/10/18 10:05
-	 * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+	 * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
 	 */
 	@Override
 	public ApplicationBasicEntity getAppById(Long appId){

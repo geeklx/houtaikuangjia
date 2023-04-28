@@ -76,7 +76,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 17:30
-     * @return java.util.List<com.fosung.workbench.AppBean.FSearchBean>
+     * @return java.util.List<com.geek.workbench.AppBean.FSearchBean>
      */
     public List<FSearchBean> searchAppByName(AppSearchParamDto shelvesSearchParamDto ){
         List<FSearchBean> infoList = new ArrayList<>();
@@ -103,7 +103,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchAllApp(AppSearchParamDto shelvesSearchParamDto){
         Set<Long> ids = getShvleIds(shelvesSearchParamDto);
@@ -121,7 +121,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<Map<String,Object>> searchAllCategoryAppList(AppSearchParamDto shelvesSearchParamDto, TerminalAppCategoryType... terminalAppCategoryTypes){
         Set<Long> shlvesIds = getShvleIds(shelvesSearchParamDto);
@@ -134,7 +134,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> searchCategoryAppList(AppSearchParamDto shelvesSearchParamDto){
         Map<String,Object> data = Maps.newHashMap();
@@ -154,7 +154,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> searchCategoryAppAllList(AppSearchParamDto shelvesSearchParamDto){
         Set<Long> shlvesIds = getShvleIds(shelvesSearchParamDto);
@@ -191,7 +191,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchMyApp(AppSearchParamDto shelvesSearchParamDto,Set<Long> ids){
         List<AppInfo> infos = Lists.newArrayList();
@@ -209,7 +209,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public MyAppList searchMyAppEdit(AppSearchParamDto shelvesSearchParamDto){
         Set<Long> shlvesIds = getShvleIds(shelvesSearchParamDto);
@@ -230,7 +230,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      *
      * @author liuke
      * @date 2021/10/26 11:11
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalConfigCategoryEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalConfigCategoryEntity>
      */
     public List<TerminalConfigCategoryEntity> getTerminalAppCategory(AppSearchParamDto shelvesSearchParamDto){
         //查询所有分类
@@ -244,7 +244,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> getFirstPageAllApp(AppSearchParamDto shelvesSearchParamDto){
         int num = Integer.valueOf(shelvesSearchParamDto.getShowNum() == null ?"8": shelvesSearchParamDto.getShowNum()) ;
@@ -291,7 +291,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public Map<String,Object> getMyAppEdit(AppSearchParamDto shelvesSearchParamDto){
         Set<Long> shlvesIds = getShvleIds(shelvesSearchParamDto);
@@ -324,7 +324,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchAllApp(AppSearchParamDto shelvesSearchParamDto,Set<Long> ids){
         List<TerminalApplicationConfigEntity> applicationConfigEntities = terminalApplicationConfigService.getCacheAppByTerminal(shelvesSearchParamDto.getTerminalId());
@@ -338,7 +338,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<TerminalApplicationConfigEntity> searchAllApp1(AppSearchParamDto shelvesSearchParamDto,Set<Long> ids){
         List<TerminalApplicationConfigEntity> applicationConfigEntities = terminalApplicationConfigService.getCacheAppByTerminal(shelvesSearchParamDto.getTerminalId());
@@ -352,7 +352,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> searchAllAppNoShelves(AppSearchParamDto shelvesSearchParamDto){
         List<TerminalApplicationConfigEntity> applicationConfigEntities = terminalApplicationConfigService.getCacheAppByTerminal(shelvesSearchParamDto.getTerminalId());
@@ -365,7 +365,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<TerminalConfigCategoryEntity> searchAllCategoryApp(AppSearchParamDto shelvesSearchParamDto,Set<Long> shlvesIds, TerminalAppCategoryType... terminalAppCategoryTypes){
 
@@ -385,7 +385,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 18:59
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<TerminalConfigCategoryEntity> searchAllCategory(AppSearchParamDto shelvesSearchParamDto, TerminalAppCategoryType... terminalAppCategoryTypes){
 
@@ -402,7 +402,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param terminalId
      * @author liuke
      * @date 2021/10/25 20:29
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public List<TerminalApplicationConfigEntity> getCateAppsByCode(List<TerminalApplicationConfigEntity> applicationConfigEntities,Long terminalId,String code){
         Set<Long> ids = getCacheAppByTerminal(terminalId,code);
@@ -501,7 +501,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param terminalApplicationConfigEntity
      * @author liuke
      * @date 2021/10/18 10:05
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public String getPackageAndConfig(TerminalApplicationConfigEntity terminalApplicationConfigEntity){
         try {
@@ -555,7 +555,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 19:17
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<AppInfo> getAppInfos(List<TerminalApplicationConfigEntity> applicationConfigEntities,AppSearchParamDto shelvesSearchParamDto){
         List<AppInfo> infos = Lists.newArrayList();
@@ -582,7 +582,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param shelvesSearchParamDto
      * @author liuke
      * @date 2021/10/25 19:17
-     * @return java.util.List<com.fosung.workbench.AppBean.AppInfo>
+     * @return java.util.List<com.geek.workbench.AppBean.AppInfo>
      */
     public List<MyAppBasic> getMyappList(List<TerminalApplicationConfigEntity> applicationConfigEntities,AppSearchParamDto shelvesSearchParamDto){
         List<MyAppBasic> infos = Lists.newArrayList();
@@ -665,7 +665,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param terminalId
      * @author liuke
      * @date 2021/10/18 10:05
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public Set<Long> getCacheAppByTerminal(Long terminalId,String code){
         Set<Long> ids = Sets.newHashSet();
@@ -706,7 +706,7 @@ public class AppSearchServiceImpl extends AbstractWorkBenchConfig {
      * @param applicationConfigEntity
      * @author liuke
      * @date 2021/10/18 10:05
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     public String getAppInfoUrl(TerminalApplicationConfigEntity applicationConfigEntity){
         String url = "";

@@ -100,7 +100,7 @@ public class SysPostServiceImpl extends AppJPABaseDataServiceImpl<SysPostEntity,
 	 * 描述: 岗位分页查询
 	 * @param searchParam
 	 * @param pageable
-	 * @return org.springframework.data.domain.Page<com.fosung.system.support.system.entity.sys.SysPostEntity>
+	 * @return org.springframework.data.domain.Page<com.geek.system.support.system.entity.sys.SysPostEntity>
 	 * @author fuhao
 	 * @date 2022/2/8 14:32
 	 **/

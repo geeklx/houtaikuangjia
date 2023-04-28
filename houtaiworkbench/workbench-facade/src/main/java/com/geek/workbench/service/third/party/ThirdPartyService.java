@@ -18,7 +18,7 @@ public interface ThirdPartyService {
      * @author: gaojian
      * @modify:
      * @param jsonObject
-     * @return: com.fosung.workbench.dto.terminal.TerminalThirdPartyCommonConfigDto
+     * @return: com.geek.workbench.dto.terminal.TerminalThirdPartyCommonConfigDto
      */
     TerminalThirdPartyCommonConfigDto getConfigInfo(JSONObject jsonObject);
 
@@ -28,7 +28,7 @@ public interface ThirdPartyService {
      * @author: gaojian
      * @modify:
      * @param entity
-     * @return: com.fosung.workbench.dto.terminal.TerminalThirdPartyCommonConfigDto
+     * @return: com.geek.workbench.dto.terminal.TerminalThirdPartyCommonConfigDto
      */
     TerminalThirdPartyCommonConfigDto getConfigInfo(TerminalThirdPartyConfigEntity entity);
 

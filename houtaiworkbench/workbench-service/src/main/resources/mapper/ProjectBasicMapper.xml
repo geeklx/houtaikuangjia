@@ -13,7 +13,7 @@
         FROM project_basic
         WHERE
             del = false
-            AND status = '${@com.fosung.workbench.common.ProjectStatusEnum@RELEASE.value}'
+            AND status = '${@com.geek.workbench.common.ProjectStatusEnum@RELEASE.value}'
     </select>
 
     <!--  查询当前用户项目为选项信息  -->
@@ -25,7 +25,7 @@
 		on project.id = manager.project_id
         WHERE
             project.del = false
-			AND project.status = '${@com.fosung.workbench.common.ProjectStatusEnum@RELEASE.value}'
+			AND project.status = '${@com.geek.workbench.common.ProjectStatusEnum@RELEASE.value}'
 			AND manager.del = false
             AND manager.user_id = #{userId}
     </select>

@@ -54,7 +54,7 @@ public class TerminalVersionUpgradeRangeImpl extends AppJPABaseDataServiceImpl<T
 	 * @createDate: 2022/2/23 18:05
 	 * @author: gaojian
 	 * @modify:
-	 * @return: java.util.List<com.fosung.workbench.entity.terminal.TerminalVersionUpgradeRangeEntity>
+	 * @return: java.util.List<com.geek.workbench.entity.terminal.TerminalVersionUpgradeRangeEntity>
 	 */
 	@Override
 	public List<TerminalVersionUpgradeRangeEntity> queryRealAll(Map<String, Object> searchParams) {

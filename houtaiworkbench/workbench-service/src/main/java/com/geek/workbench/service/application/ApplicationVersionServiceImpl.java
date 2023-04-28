@@ -236,7 +236,7 @@ public class ApplicationVersionServiceImpl extends AppJPABaseDataServiceImpl<App
 	 * @createDate: 2021/10/21 18:36
 	 * @author: gaojian
 	 * @modify:
-	 * @return: com.fosung.workbench.entity.application.ApplicationBaseConfigEntity
+	 * @return: com.geek.workbench.entity.application.ApplicationBaseConfigEntity
 	 */
 	@Override
 	public ApplicationVersionEntity getVersionInfo(Long versionId) {
@@ -310,7 +310,7 @@ public class ApplicationVersionServiceImpl extends AppJPABaseDataServiceImpl<App
 	 * @createDate: 2021/10/26 11:49
 	 * @author: gaojian
 	 * @modify:
-	 * @return: com.fosung.workbench.entity.application.ApplicationVersionEntity
+	 * @return: com.geek.workbench.entity.application.ApplicationVersionEntity
 	 */
 	@Override
 	public ApplicationVersionEntity queryAppPackageName(Long appId, TerminalType terminalType) {

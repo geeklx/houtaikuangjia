@@ -180,7 +180,7 @@ public class TerminalBasicInfoServiceImpl extends AppJPABaseDataServiceImpl<Term
 	 * @param packageName
 	 * @author liuke
 	 * @date 2021/10/18 10:05
-	 * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+	 * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
 	 */
 	@Override
 	public List<TerminalBasicEntity> getCacheTerminal(String packageName,String terminalType){
@@ -295,7 +295,7 @@ public class TerminalBasicInfoServiceImpl extends AppJPABaseDataServiceImpl<Term
 
 	/**
 	 * 描述: 终端基本信息分页查询
-	 * @return org.springframework.data.domain.Page<com.fosung.workbench.entity.terminal.TerminalBasicEntity>
+	 * @return org.springframework.data.domain.Page<com.geek.workbench.entity.terminal.TerminalBasicEntity>
 	 * @author fuhao
 	 * @date 2021/10/26 15:37
 	 **/
@@ -323,7 +323,7 @@ public class TerminalBasicInfoServiceImpl extends AppJPABaseDataServiceImpl<Term
 	/**
 	 * 描述: 终端下拉框
 	 * @param searchParam
-	 * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalBasicEntity>
+	 * @return java.util.List<com.geek.workbench.entity.terminal.TerminalBasicEntity>
 	 * @author fuhao
 	 * @date 2021/10/26 15:36
 	 **/
@@ -351,7 +351,7 @@ public class TerminalBasicInfoServiceImpl extends AppJPABaseDataServiceImpl<Term
 	 * @author: gaojian
 	 * @modify:
 	 * @param
-	 * @return: java.util.List<com.fosung.workbench.entity.terminal.TerminalBasicEntity>
+	 * @return: java.util.List<com.geek.workbench.entity.terminal.TerminalBasicEntity>
 	 */
 	@Override
 	public List<TerminalBasicEntity> queryTerminalTree(){

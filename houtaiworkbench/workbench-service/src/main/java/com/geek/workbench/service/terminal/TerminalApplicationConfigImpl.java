@@ -118,7 +118,7 @@ public class TerminalApplicationConfigImpl extends AppJPABaseDataServiceImpl<Ter
 	 * @createDate: 2021/12/1 14:47
 	 * @author: gaojian
 	 * @modify:
-	 * @return: java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+	 * @return: java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
 	 */
 	@Override
 	public List<TerminalApplicationConfigEntity> queryTerminalApp(Map<String, Object> searchParam) {
@@ -494,7 +494,7 @@ public class TerminalApplicationConfigImpl extends AppJPABaseDataServiceImpl<Ter
 	 * @param terminalId
 	 * @author liuke
 	 * @date 2021/10/18 10:05
-	 * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+	 * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
 	 */
 	@Override
 	public List<TerminalApplicationConfigEntity> getCacheAppByTerminal(Long terminalId){

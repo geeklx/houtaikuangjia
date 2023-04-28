@@ -216,7 +216,7 @@ public class ProjectBasicServiceImpl extends AppJPABaseDataServiceImpl<ProjectBa
 	 * @author: gaojian
 	 * @modify:
 	 * @param list
-	 * @return: java.util.List<com.fosung.workbench.entity.project.ProjectBasicEntity>
+	 * @return: java.util.List<com.geek.workbench.entity.project.ProjectBasicEntity>
 	 */
 	@Override
 	public List<ProjectBasicEntity> queryProjectInfoByIds(List<Long> list) {

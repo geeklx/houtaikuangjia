@@ -29,7 +29,7 @@ public interface TerminalApplicationConfigService extends AppBaseDataService<Ter
      * @author: gaojian
      * @modify:
      * @param searchParam
-     * @return: java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return: java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     List<TerminalApplicationConfigEntity> queryTerminalApp(Map<String, Object> searchParam);
     /**
@@ -73,7 +73,7 @@ public interface TerminalApplicationConfigService extends AppBaseDataService<Ter
      * @param id
      * @author liuke
      * @date 2021/10/18 10:04
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     List<TerminalApplicationConfigEntity> getCacheAppByTerminal(Long id);
 

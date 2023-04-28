@@ -23,7 +23,7 @@ public interface TerminalApplicationConfigDao extends AppJPABaseDao<TerminalAppl
      * @author: gaojian
      * @modify:
      * @param searchParam
-     * @return: java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+     * @return: java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
      */
     @MybatisQuery
     List<TerminalApplicationConfigEntity> queryTerminalApp(@Param("params") Map<String, Object> searchParam);

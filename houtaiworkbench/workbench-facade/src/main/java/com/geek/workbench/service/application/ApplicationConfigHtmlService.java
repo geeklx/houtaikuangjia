@@ -39,7 +39,7 @@ public interface ApplicationConfigHtmlService extends AppBaseDataService<Applica
      * @author: gaojian
      * @modify:
      * @param id
-     * @return: com.fosung.workbench.entity.application.ApplicationConfigAndroidEntity
+     * @return: com.geek.workbench.entity.application.ApplicationConfigAndroidEntity
      */
     ApplicationBaseConfigEntity queryFirstByAppIdOrderByCreateDatetime(Long id);
 }

@@ -142,7 +142,7 @@ public class TerminalConfigNavigationBtmImpl extends AppJPABaseDataServiceImpl<T
 	/**
 	 * 描述: 获取底部导航下拉框
 	 * @param dto
-	 * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalConfigNavigationBtmEntity>
+	 * @return java.util.List<com.geek.workbench.entity.terminal.TerminalConfigNavigationBtmEntity>
 	 * @author fuhao
 	 * @date 2021/11/9 14:15
 	 **/

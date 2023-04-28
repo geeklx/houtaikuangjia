@@ -28,7 +28,7 @@ public class WorkBenchConfigureServiceAdapter {
      * @param key
      * @author liuke
      * @date 2021/10/9 11:30
-     * @return com.fosung.workbench.configurecenter.service.WorkBenchConfigureService
+     * @return com.geek.workbench.configurecenter.service.WorkBenchConfigureService
      */
     public WorkBenchConfigureService getWorkBenchConfigureService(String key){
         for (WorkBenchConfigureService workBenchService : workBenchServices) {

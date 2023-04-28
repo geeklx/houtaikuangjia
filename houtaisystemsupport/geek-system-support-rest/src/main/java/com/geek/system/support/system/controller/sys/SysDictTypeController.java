@@ -65,7 +65,7 @@ public class SysDictTypeController extends AppIBaseController {
      * @param sysDictType
      * @author liuke
      * @date 2021/4/12 9:12
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      */
     @PostMapping("/queryall")
     public ResponseParam queryByRoleId(@RequestBody SysDictTypeDto sysDictType){

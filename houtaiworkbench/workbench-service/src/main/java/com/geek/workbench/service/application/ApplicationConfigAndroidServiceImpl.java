@@ -144,7 +144,7 @@ public class ApplicationConfigAndroidServiceImpl extends AppJPABaseDataServiceIm
 	 * @createDate: 2021/10/26 17:14
 	 * @author: gaojian
 	 * @modify:
-	 * @return: com.fosung.workbench.entity.application.ApplicationConfigAndroidEntity
+	 * @return: com.geek.workbench.entity.application.ApplicationConfigAndroidEntity
 	 */
 	@Override
 	public ApplicationBaseConfigEntity queryFirstByAppIdOrderByCreateDatetime(Long id) {

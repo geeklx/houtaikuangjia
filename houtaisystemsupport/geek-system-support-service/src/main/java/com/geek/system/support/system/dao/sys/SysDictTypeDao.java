@@ -16,7 +16,7 @@ public interface SysDictTypeDao extends AppJPABaseDao<SysDictTypeEntity, Long>{
      * 描述: 字典项分页查询
      * @param searchParam
      * @param pageable
-     * @return org.springframework.data.domain.Page<com.fosung.system.support.system.entity.sys.SysDictTypeEntity>
+     * @return org.springframework.data.domain.Page<com.geek.system.support.system.entity.sys.SysDictTypeEntity>
      * @author fuhao
      * @date 2022/1/18 15:52
      **/

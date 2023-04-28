@@ -29,7 +29,7 @@ public interface TerminalVersionUpgradeRangeService extends AppBaseDataService<T
      * @author: gaojian
      * @modify:
      * @param searchParams
-     * @return: java.util.List<com.fosung.workbench.entity.terminal.TerminalVersionUpgradeRangeEntity>
+     * @return: java.util.List<com.geek.workbench.entity.terminal.TerminalVersionUpgradeRangeEntity>
      */
     List<TerminalVersionUpgradeRangeEntity> queryRealAll(Map<String,Object> searchParams);
 

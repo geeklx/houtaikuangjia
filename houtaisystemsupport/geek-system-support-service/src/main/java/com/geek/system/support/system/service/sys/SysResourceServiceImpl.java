@@ -154,7 +154,7 @@ public class SysResourceServiceImpl extends AppJPABaseDataServiceImpl<SysResourc
 	 * @param params
 	 * @author liuke
 	 * @date 2022/6/28 14:02
-	 * @return java.util.List<com.fosung.system.support.system.vo.SysResourceMenuVo>
+	 * @return java.util.List<com.geek.system.support.system.vo.SysResourceMenuVo>
 	 */
 	@Override
 	public List<SysResourceMenuVo> selectByAppCodeAndRole(Map<String,Object> params) {
@@ -171,7 +171,7 @@ public class SysResourceServiceImpl extends AppJPABaseDataServiceImpl<SysResourc
 	 * @param params
 	 * @author liuke
 	 * @date 2022/6/28 14:02
-	 * @return java.util.List<com.fosung.system.support.system.vo.SysResourceMenuVo>
+	 * @return java.util.List<com.geek.system.support.system.vo.SysResourceMenuVo>
 	 */
 	@Override
 	public List<Long> selectAppByAppCodeAndRole(Map<String,Object> params) {
@@ -190,7 +190,7 @@ public class SysResourceServiceImpl extends AppJPABaseDataServiceImpl<SysResourc
 	 * @param pageable
 	 * @author liuke
 	 * @date 2021/11/2 16:50
-	 * @return org.springframework.data.domain.Page<com.fosung.system.support.system.entity.sys.SysRoleEntity>
+	 * @return org.springframework.data.domain.Page<com.geek.system.support.system.entity.sys.SysRoleEntity>
 	 */
 	@Override
 	public Page<SysResourceEntity> queryPage(Map<String, Object> searchParam, Pageable pageable) {
@@ -236,7 +236,7 @@ public class SysResourceServiceImpl extends AppJPABaseDataServiceImpl<SysResourc
 	 * @param appId
 	 * @author liuke
 	 * @date 2021/12/3 14:29
-	 * @return java.util.List<com.fosung.system.support.system.entity.sys.SysResourceEntity>
+	 * @return java.util.List<com.geek.system.support.system.entity.sys.SysResourceEntity>
 	 */
 	@Override
 	public List<SysResourceEntity> getResoueceByAppId(Long appId){
@@ -251,7 +251,7 @@ public class SysResourceServiceImpl extends AppJPABaseDataServiceImpl<SysResourc
 	 * @param projectId
 	 * @author liuke
 	 * @date 2021/12/3 15:08
-	 * @return java.util.List<com.fosung.system.support.system.entity.sys.ReturnTreeData>
+	 * @return java.util.List<com.geek.system.support.system.entity.sys.ReturnTreeData>
 	 */
 	@Override
 	public List<ReturnTreeData> getAppResourceTree(Long projectId){
@@ -288,7 +288,7 @@ public class SysResourceServiceImpl extends AppJPABaseDataServiceImpl<SysResourc
 	 * @param userId
 	 * @author liuke
 	 * @date 2021/12/3 15:22
-	 * @return java.util.List<com.fosung.system.support.system.entity.sys.ReturnTreeData>
+	 * @return java.util.List<com.geek.system.support.system.entity.sys.ReturnTreeData>
 	 */
 	@Override
 	public List<ReturnTreeData> getAppResourceCheckHas(Long projectId,Long userId,Long roleId){
@@ -321,7 +321,7 @@ public class SysResourceServiceImpl extends AppJPABaseDataServiceImpl<SysResourc
 	 * @param roleId
 	 * @author liuke
 	 * @date 2021/12/3 15:33
-	 * @return java.util.List<com.fosung.system.support.system.entity.sys.ReturnTreeData>
+	 * @return java.util.List<com.geek.system.support.system.entity.sys.ReturnTreeData>
 	 */
 	@Override
 	public List<ReturnTreeData> getAppResourceCheckHasAndNoRole(Long projectId,Long userId,Long roleId){
@@ -350,7 +350,7 @@ public class SysResourceServiceImpl extends AppJPABaseDataServiceImpl<SysResourc
 	 * @param roleId
 	 * @author liuke
 	 * @date 2021/12/3 15:33
-	 * @return java.util.List<com.fosung.system.support.system.entity.sys.ReturnTreeData>
+	 * @return java.util.List<com.geek.system.support.system.entity.sys.ReturnTreeData>
 	 */
 	@Override
 	public List<ReturnTreeData> getRoleResource(Long projectId,Long appId,Long roleId){

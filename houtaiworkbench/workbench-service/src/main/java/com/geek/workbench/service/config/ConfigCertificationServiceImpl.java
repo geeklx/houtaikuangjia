@@ -82,7 +82,7 @@ public class ConfigCertificationServiceImpl extends AppJPABaseDataServiceImpl<Co
 	 * @param id
 	 * @author liuke
 	 * @date 2021/10/18 10:05
-	  * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity>
+	  * @return java.util.List<com.geek.workbench.entity.terminal.TerminalApplicationConfigEntity>
 	 */
 	@Override
 	public ConfigCertificationUrlAndParam getCacheTerminal(Long id){

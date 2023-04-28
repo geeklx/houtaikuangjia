@@ -48,7 +48,7 @@ public class AuthClientServiceImpl extends AppJPABaseDataServiceImpl<AuthClientE
      * @param pageable
      * @author liuke
      * @date 2022/3/9 14:40
-     * @return org.springframework.data.domain.Page<com.fosung.system.support.system.entity.sys.AuthClientEntity>
+     * @return org.springframework.data.domain.Page<com.geek.system.support.system.entity.sys.AuthClientEntity>
      */
     @Override
     public Page<AuthClientEntity> queryPage(Map<String, Object> searchParam, Pageable pageable) {
@@ -82,7 +82,7 @@ public class AuthClientServiceImpl extends AppJPABaseDataServiceImpl<AuthClientE
     /**
      * 描述: 查询详情
      * @param searchParam
-     * @return com.fosung.system.support.system.entity.sys.AuthClientEntity
+     * @return com.geek.system.support.system.entity.sys.AuthClientEntity
      * @author fuhao
      * @date 2022/4/7 9:07
      **/

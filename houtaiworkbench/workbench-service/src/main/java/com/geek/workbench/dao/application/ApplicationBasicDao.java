@@ -50,7 +50,7 @@ public interface ApplicationBasicDao extends AppJPABaseDao<ApplicationBasicEntit
      * @author: gaojian
      * @modify:
      * @param appCode
-     * @return: com.fosung.workbench.entity.application.ApplicationBasicEntity
+     * @return: com.geek.workbench.entity.application.ApplicationBasicEntity
      */
     ApplicationBasicEntity queryFirstByAppCodeAndDel(String appCode,Boolean del);
     
@@ -61,7 +61,7 @@ public interface ApplicationBasicDao extends AppJPABaseDao<ApplicationBasicEntit
      * @modify:
      * @param packageName
      * @param appType
-     * @return: com.fosung.workbench.entity.application.ApplicationBasicEntity
+     * @return: com.geek.workbench.entity.application.ApplicationBasicEntity
      */
     ApplicationBasicEntity queryFirstByPackageNameAndAppTypeAndDel(String packageName, AppType appType, Boolean del);
 

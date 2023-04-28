@@ -31,7 +31,7 @@ public class ThirdPartyServiceStrategy {
      * @author: gaojian
      * @modify:
      * @param component
-     * @return: com.fosung.workbench.service.third.party.ThirdPartyService
+     * @return: com.geek.workbench.service.third.party.ThirdPartyService
      */
     public ThirdPartyService getThirdPartyService(ConfigType component) {
         ThirdPartyService strategy = thirdPartyServiceStrategy.get(component.name());

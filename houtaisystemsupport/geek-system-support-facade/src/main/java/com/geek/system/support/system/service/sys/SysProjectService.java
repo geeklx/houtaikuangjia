@@ -13,7 +13,7 @@ public interface SysProjectService extends AppBaseDataService<SysProjectEntity, 
     /**
      * 描述: 项目关联应用
      * @param id
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/11/25 15:33
      **/

@@ -83,7 +83,7 @@ public interface ApplicationVersionDao extends AppJPABaseDao<ApplicationVersionE
      * @param appId
      * @param appType
      * @param isNewVersion
-     * @return: com.fosung.workbench.entity.application.ApplicationVersionEntity
+     * @return: com.geek.workbench.entity.application.ApplicationVersionEntity
      */
     ApplicationVersionEntity getFirstByAppIdAndAppTypeAndIsNewVersion(Long appId, TerminalType appType, Boolean isNewVersion);
 }

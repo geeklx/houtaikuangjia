@@ -44,7 +44,7 @@ public interface ProjectBasicDao extends AppJPABaseDao<ProjectBasicEntity,Long> 
      * @modify:
      * @param projectCode
      * @param del
-     * @return: com.fosung.workbench.entity.project.ProjectBasicEntity
+     * @return: com.geek.workbench.entity.project.ProjectBasicEntity
      */
     ProjectBasicEntity getFirstByProjectCodeAndDel(String projectCode,Boolean del);
 
@@ -54,7 +54,7 @@ public interface ProjectBasicDao extends AppJPABaseDao<ProjectBasicEntity,Long> 
      * @author: gaojian
      * @modify:
      * @param list
-     * @return: java.util.List<com.fosung.workbench.entity.project.ProjectBasicEntity>
+     * @return: java.util.List<com.geek.workbench.entity.project.ProjectBasicEntity>
      */
     @MybatisQuery
     List<ProjectBasicEntity> queryProjectInfoByIds(@Param("list") List<Long> list);

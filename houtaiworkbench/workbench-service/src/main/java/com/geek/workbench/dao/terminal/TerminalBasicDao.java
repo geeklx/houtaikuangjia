@@ -17,7 +17,7 @@ public interface TerminalBasicDao extends AppJPABaseDao<TerminalBasicEntity,Long
      * 描述: 终端信息分页查询
      * @param searchParam
      * @param pageable
-     * @return com.fosung.framework.dao.config.mybatis.page.MybatisPage<com.fosung.workbench.entity.terminal.TerminalBasicEntity>
+     * @return com.fosung.framework.dao.config.mybatis.page.MybatisPage<com.geek.workbench.entity.terminal.TerminalBasicEntity>
      * @author fuhao
      * @date 2021/10/26 14:44
      **/
@@ -27,7 +27,7 @@ public interface TerminalBasicDao extends AppJPABaseDao<TerminalBasicEntity,Long
     /**
      * 描述: 终端下拉框
      * @param searchParam
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalBasicEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalBasicEntity>
      * @author fuhao
      * @date 2021/10/26 14:44
      **/
@@ -57,7 +57,7 @@ public interface TerminalBasicDao extends AppJPABaseDao<TerminalBasicEntity,Long
     /**
      * 描述: 获取项目数结构
      * @param
-     * @return java.util.List<com.fosung.workbench.entity.terminal.TerminalBasicEntity>
+     * @return java.util.List<com.geek.workbench.entity.terminal.TerminalBasicEntity>
      * @author fuhao
      * @date 2021/10/28 16:44
      **/

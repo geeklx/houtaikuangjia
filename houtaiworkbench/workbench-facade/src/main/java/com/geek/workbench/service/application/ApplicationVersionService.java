@@ -68,7 +68,7 @@ public interface ApplicationVersionService extends AppBaseDataService<Applicatio
      * @modify:
      * @param versionId
      * @param versionId
-     * @return: com.fosung.workbench.entity.application.ApplicationBaseConfigEntity
+     * @return: com.geek.workbench.entity.application.ApplicationBaseConfigEntity
      */
     ApplicationVersionEntity getVersionInfo(Long versionId);
 
@@ -89,7 +89,7 @@ public interface ApplicationVersionService extends AppBaseDataService<Applicatio
      * @modify:
      * @param appId
      * @param appType
-     * @return: com.fosung.workbench.entity.application.ApplicationVersionEntity
+     * @return: com.geek.workbench.entity.application.ApplicationVersionEntity
      */
     ApplicationVersionEntity queryAppPackageName(Long appId, TerminalType appType);
 

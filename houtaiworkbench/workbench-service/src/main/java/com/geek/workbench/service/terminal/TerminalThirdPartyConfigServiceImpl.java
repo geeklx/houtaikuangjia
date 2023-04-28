@@ -72,7 +72,7 @@ public class TerminalThirdPartyConfigServiceImpl extends
      * @author: gaojian
      * @modify:
      * @param jsonObject
-     * @return: com.fosung.workbench.entity.terminal.TerminalThirdPartyConfigEntity
+     * @return: com.geek.workbench.entity.terminal.TerminalThirdPartyConfigEntity
      */
     public TerminalThirdPartyConfigEntity getEntityInfo(JSONObject jsonObject){
 

@@ -28,7 +28,7 @@ public interface TerminalConfigManageService extends AppBaseDataService<Terminal
      * @param id 
      * @author liuke
      * @date 2021/11/3 14:30
-     * @return com.fosung.workbench.dto.other.ConfigCertificationUrlAndParam
+     * @return com.geek.workbench.dto.other.ConfigCertificationUrlAndParam
      */
     ConfigCertificationUrlAndParam getCacheTerminal(Long id);
 }

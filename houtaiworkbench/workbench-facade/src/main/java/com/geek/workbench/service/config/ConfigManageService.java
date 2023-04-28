@@ -58,7 +58,7 @@ public interface ConfigManageService extends AppBaseDataService<ConfigManageEnti
      * @param id
      * @author liuke
      * @date 2021/10/29 16:21
-     * @return com.fosung.workbench.dto.other.ConfigCertificationUrlAndParam
+     * @return com.geek.workbench.dto.other.ConfigCertificationUrlAndParam
      */
     ConfigCertificationUrlAndParam getCacheTerminal(Long id);
 }

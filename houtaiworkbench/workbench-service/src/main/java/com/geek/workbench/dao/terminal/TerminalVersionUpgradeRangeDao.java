@@ -33,7 +33,7 @@ public interface TerminalVersionUpgradeRangeDao extends AppJPABaseDao<TerminalVe
      * @createDate: 2022/2/23 18:05
      * @author: gaojian
      * @modify:
-     * @return: java.util.List<com.fosung.workbench.entity.terminal.TerminalVersionUpgradeRangeEntity>
+     * @return: java.util.List<com.geek.workbench.entity.terminal.TerminalVersionUpgradeRangeEntity>
      */
     @MybatisQuery
     List<TerminalVersionUpgradeRangeEntity> queryRealAll(@Param("params") Map<String, Object> searchParams);

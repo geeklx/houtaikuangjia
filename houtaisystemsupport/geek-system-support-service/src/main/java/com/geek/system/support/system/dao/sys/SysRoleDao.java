@@ -20,7 +20,7 @@ public interface SysRoleDao extends AppJPABaseDao<SysRoleEntity, Long>{
      * 描述: 分页查询
      * @param params
      * @param pageable
-     * @return com.geek.framework.dao.config.mybatis.page.MybatisPage<com.fosung.system.support.system.entity.sys.SysRoleEntity>
+     * @return com.geek.framework.dao.config.mybatis.page.MybatisPage<com.geek.system.support.system.entity.sys.SysRoleEntity>
      * @author fuhao
      * @date 2021/11/27 15:53
      **/

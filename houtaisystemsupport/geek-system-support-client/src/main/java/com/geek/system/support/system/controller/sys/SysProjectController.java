@@ -62,7 +62,7 @@ public class SysProjectController extends AppIBaseController {
     /***
      * 描述: 查询全部项目，如：下拉框
      * @param sysProjectDto
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/11/25 9:02
      **/
@@ -151,7 +151,7 @@ public class SysProjectController extends AppIBaseController {
     /**
      * 描述: 批量启动/禁用
      * @param sysProject
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/11/25 10:22
      **/
@@ -190,7 +190,7 @@ public class SysProjectController extends AppIBaseController {
     /**
      * 描述: 项目关联应用
      * @param ids
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/11/25 15:33
      **/
@@ -210,7 +210,7 @@ public class SysProjectController extends AppIBaseController {
     /**
      * 描述: 项目绑定应用
      * @param sysProjectApp
-     * @return com.fosung.framework.web.http.ResponseParam
+     * @return com.geek.framework.web.http.ResponseParam
      * @author fuhao
      * @date 2021/11/25 19:46
      **/

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.fosung.system.pbs.config.PbsClientAutoConfiguration
+com.geek.system.pbs.config.PbsClientAutoConfiguration

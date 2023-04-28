@@ -19,7 +19,7 @@ public interface ProjectManagerDao extends AppJPABaseDao<ProjectManagerEntity,Lo
      * @param projectId
      * @param userId
      * @param del
-     * @return: com.fosung.workbench.entity.project.ProjectManagerEntity
+     * @return: com.geek.workbench.entity.project.ProjectManagerEntity
      */
     ProjectManagerEntity getFirstByProjectIdAndUserIdAndDel(Long projectId,String userId,Boolean del);
 
