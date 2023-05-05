@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fosung.workbench.dao.application.ApplicationVersionDao" >
+    <resultMap id="baseResultMap" type="com.fosung.workbench.entity.application.ApplicationVersionEntity">
+
+    </resultMap>
+    <select id="queryByPage"  resultMap="baseResultMap" parameterType="java.util.Map">
+        SELECT version.*,app.app_name FROM application_version version
+        LEFT JOIN application app ON version.app_id = app.id
+        WHERE version.del = FALSE
+        <if test="params.appName!=null and params.appName != ''">
+            AND app.app_name LIKE '%${params.appName}%'
+        </if>
+    </select>
+
+    <!--  查询应用最大版本号  -->
+    <select id="getMaxVersionNum" parameterType="com.fosung.workbench.entity.application.ApplicationVersionEntity" resultType="java.lang.Integer">
+        SELECT max(version_num) FROM "application_version" where del = false and app_id = #{appId} and app_type = #{appType}
+    </select>
+
+    <!--  修改为不是最新版本  -->
+    <update id="updateAllIsNotNewVersion" parameterType="com.fosung.workbench.entity.application.ApplicationVersionEntity">
+        UPDATE application_version SET is_new_version = false where app_id = #{appId} and app_type = #{appType}
+    </update>
+
+    <!--  查询版本信息  -->
+    <select id="queryVersion"  resultType="java.util.Map" parameterType="com.fosung.workbench.dto.application.ApplicationVersionDto">
+        select
+        version.version_config_id as "versionConfigId",
+        version.app_id as "appId",
+        version.id,
+        version.app_type as "appType",
+        basic.app_name as "appName",
+        version.version_name as "versionName",
+        version.version_num as "versionNum",
+        version.download_num as "downloadNum",
+        version.remark,
+        version.create_user_name as "createrName",
+        to_char(version.create_time,'yyyy-mm-dd hh24:mm:ss') as "createDateTime"
+        from application_version version left join application_basic basic
+        on version.app_id = basic.id
+        where version.is_new_version = true
+        and version.del = false
+        <if test="params.appName!=null and params.appName != ''">
+            AND basic.app_name LIKE '%${params.appName}%'
+        </if>
+        <if test="params.versionName!=null and params.versionName != ''">
+            AND version.version_name LIKE '%${params.versionName}%'
+        </if>
+        <if test="params.appTypeStr!=null and params.appTypeStr != ''">
+            AND version.app_type = #{params.appTypeStr}
+        </if>
+        <if test="params.versionName!=null and params.versionName != ''">
+            AND version.version_name LIKE '%${params.versionName}%'
+        </if>
+        <if test="params.startTime !=null ">
+            AND version.create_time &gt;= #{params.startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="params.endTime !=null ">
+            AND version.create_time &lt;= #{params.endTime,jdbcType=TIMESTAMP}
+        </if>
+        order by version.create_time desc
+    </select>
+
+    <!--  删除所有版本配置信息  -->
+    <update id="deleteAllConfigById" parameterType="java.lang.Long">
+        update application_config_ios set del = true where app_version_id = #{id} ;
+        update application_config_html set del = true where app_version_id = #{id} ;
+        update application_config_android set del = true where app_version_id = #{id}
+    </update>
+
+    <!--  删除应用信息  -->
+    <update id="deleteAllByAppId" parameterType="java.lang.Long">
+        update application_version set del = true where app_id = #{appId}
+    </update>
+</mapper>

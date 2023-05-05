@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fosung.workbench.dao.terminal.TerminalApplicationBindDao" >
+    <resultMap id="baseResultMap" type="com.fosung.workbench.entity.terminal.TerminalApplicationBindEntity">
+        <result column="version_name" property="versionName"/>
+        <result column="version_num" property="versionNum"/>
+        <result column="version_size" property="versionSize"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+    <select id="queryTerminalAppVersion"  resultMap="baseResultMap" parameterType="java.util.Map">
+        SELECT
+            a.id,
+            a.app_version_id,
+            a.app_config_id,
+            a.terminal_id,
+            a.project_id,
+            a.app_id,
+            b.version_name,
+            b.version_num,
+            b.version_size,
+            a.status,
+            b.remark
+        FROM
+        terminal_application_bind a
+        LEFT JOIN application_version b ON a.app_version_id = b.id
+        LEFT JOIN application_basic c ON a.app_id = c.id
+        <where>
+            a.del = false
+            and a.project_id = #{params.projectId}
+            and a.terminal_id = #{params.terminalId}
+            and a.app_id = #{params.appId}
+            and a.app_config_id = #{params.appConfigId}
+        </where>
+        order by a.create_time desc
+    </select>
+    <update id="updateBind" parameterType="java.util.Map">
+        update
+            terminal_application_bind
+        set
+            status = #{params.status}
+        where
+            del = false
+        and id = #{params.id}
+    </update>
+
+    <update id="updateTerminalAppConfig" parameterType="java.util.Map">
+        update
+            terminal_application_config
+        set
+        <if test="params.appVersionId != null">
+            app_version_id = #{params.appVersionId},
+        </if>
+        <if test="params.versionName != null and params.versionName != ''">
+            version_name = #{params.versionName},
+        </if>
+        <if test="params.versionNum != null and params.versionNum != ''">
+            version_num = #{params.versionNum},
+        </if>
+
+        status = #{params.status}
+        where
+            del = false
+          and id = #{params.appConfigId}
+    </update>
+
+    <!--  删除绑定信息  -->
+    <update id="deleteAllByAppId" parameterType="java.lang.Long">
+        update terminal_application_bind set del = true where app_id = #{appId}
+    </update>
+
+    <!--  删除应用信息  -->
+    <update id="deleteAllByAppVersionId" parameterType="java.lang.Long">
+        update terminal_application_bind set del = true where app_version_id = #{appVersionId}
+    </update>
+
+</mapper>

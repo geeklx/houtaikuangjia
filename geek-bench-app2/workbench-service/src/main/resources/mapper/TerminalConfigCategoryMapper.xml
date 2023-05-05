@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fosung.workbench.dao.terminal.TerminalConfigCategoryDao" >
+    <resultMap id="baseResultMap" type="com.fosung.workbench.entity.terminal.TerminalConfigCategoryEntity">
+        <result column="category_type" property="type"/>
+        <result column="category_code" property="code"/>
+    </resultMap>
+
+    <!--  查询应用最新排序  -->
+    <select id="getMaxNum" parameterType="com.fosung.workbench.entity.terminal.TerminalConfigCategoryEntity" resultType="java.lang.Integer">
+        SELECT max(num) FROM terminal_config_category where del = false and terminal_id = #{params.terminalId}
+    </select>
+    <!-- 查询工作台分类绑定的应用 -->
+    <select id="queryCategoryBindApp" parameterType="java.util.Map" resultType="com.fosung.workbench.entity.terminal.TerminalApplicationConfigEntity">
+        SELECT
+            b.id,
+            b.terminal_id,
+            a.category_type as "categoryType",
+            a.category_code as "categoryCode",
+            b.app_version_id,
+            b.app_name,
+            b.app_icon,
+            a.disabled_num as "disabledNum"
+        FROM
+            terminal_category_app a
+        inner JOIN terminal_application_config b ON a.terminal_id = b.terminal_id
+        <where>
+            b.del = false
+            and b.id = a.app_config_id
+            and b.status = 'release'
+            <if test="params.categoryCode != null and params.categoryCode != ''">
+                and a.category_code = #{params.categoryCode}
+            </if>
+            <if test="params.categoryType != null and params.categoryType != ''">
+                and a.category_type = #{params.categoryType}
+            </if>
+            <if test="params.terminalId != null ">
+                and a.terminal_id = #{params.terminalId}
+            </if>
+        </where>
+        order by b.num
+    </select>
+</mapper>

@@ -1,0 +1,62 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fosung.workbench.dao.sys.SysDictTypeDao">
+
+    <select id="queryPage" parameterType="java.util.Map" resultType="com.fosung.workbench.entity.sys.SysDictTypeEntity">
+        SELECT
+            dict.*
+        FROM
+            sys_dict_type dict
+        <where>
+            <if test="params.dictName!=null and params.dictName!=''">
+                and dict.dict_name like '%${params.dictName}%'
+            </if>
+            <if test="params.dictType!=null">
+                and dict.dict_type = #{params.dictType}
+            </if>
+            <if test="params.status!=null">
+                and dict.status = #{params.status}
+            </if>
+            <if test="params.startTime!=null">
+                and dict.create_time &gt;= #{params.startTime}
+            </if>
+            <if test="params.endTime!=null">
+                and dict.create_time &lt;= #{params.endTime}
+            </if>
+        </where>
+        order by dict.create_time desc
+    </select>
+    <select id="queryDictByType" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT id,
+               dict_default as "dictDefault",
+               dict_label as "name",
+               dict_type as "dictType",
+               dict_value as "code"
+        FROM sys_dict_data
+        where   dict_type = #{params.dictType}
+        ORDER BY num
+    </select>
+    <insert id="saveinfo">
+        INSERT INTO sys_dict_type
+                (
+                        id,
+                        create_time,
+                        last_update_time,
+                        dict_name,
+                        dict_type,
+                        remark,
+                        project_id)
+        VALUES
+                <foreach collection="infos" item="info" separator=",">
+                    (
+                    #{info.id},
+                    #{info.createDatetime},
+                    #{info.lastUpdateDatetime},
+                    #{info.dictName},
+                    #{info.dictType},
+                    #{info.remark},
+                    #{info.projectId}
+                    )
+                </foreach>
+
+    </insert>
+</mapper>

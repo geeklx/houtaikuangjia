@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>workbench</artifactId>
+        <groupId>com.geek</groupId>
+        <version>3.0.0-SNAPSHOT</version>
+        <relativePath>./../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+<!--    <version>2.0.0-SNAPSHOT</version>-->
+    <artifactId>geek-system-support-pbs</artifactId>
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fosung.framework</groupId>
+            <artifactId>framework-webmvc</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fosung.framework</groupId>
+            <artifactId>framework-mq</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+    </dependencies>
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>nexus</id>-->
+<!--            <name>nexus repository</name>-->
+<!--            <url>http://47.104.8.101:8081/nexus/content/groups/jar-all/</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--                <updatePolicy>always</updatePolicy>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+<!--    <pluginRepositories>-->
+<!--        <pluginRepository>-->
+<!--            <id>nexus</id>-->
+<!--            <name>Team Nexus Repository</name>-->
+<!--            <url>http://47.104.8.101:8081/nexus/content/groups/jar-all/</url>-->
+<!--        </pluginRepository>-->
+<!--    </pluginRepositories>-->
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>releases</id>-->
+<!--            <name>Nexus Release Repository</name>-->
+<!--            <url>http://47.104.8.101:8081/nexus/content/repositories/releases/</url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>snapshot</id>-->
+<!--            <name>Nexus snapshot Repository</name>-->
+<!--            <url>http://47.104.8.101:8081/nexus/content/repositories/snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
+</project>

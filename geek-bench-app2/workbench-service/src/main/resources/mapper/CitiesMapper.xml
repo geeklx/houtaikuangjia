@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fosung.workbench.dao.common.CitiesDao" >
+
+    <!--  查询一级地市编码  -->
+    <select id="queryRootCities"  resultType="java.util.HashMap" parameterType="java.lang.String">
+        SELECT
+            c_code AS "dictValue",
+            c_name AS "dictLabel"
+        FROM
+            "cities"
+        WHERE
+            c_code LIKE #{code}
+    </select>
+
+    <!--  查询一级区县编码  -->
+    <select id="queryCities"  resultType="java.util.HashMap" parameterType="java.lang.String">
+        SELECT
+            c_code AS "dictValue",
+            c_name AS "dictLabel"
+        FROM
+            "cities"
+        WHERE
+            c_code LIKE #{dimCode}
+            AND c_code != #{code}
+    </select>
+
+</mapper>

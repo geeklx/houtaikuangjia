@@ -1,0 +1,26 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fosung.system.support.system.dao.sys.SysPostDao">
+
+
+    <select id="queryPage" parameterType="java.util.Map" resultType="com.fosung.system.support.system.entity.sys.SysPostEntity">
+        select a.*,b.project_name as "projectName" from sys_post a
+        left join sys_project b on a.project_id = b.id
+        where a.del = FALSE
+        <if test="params.projectId!=null">
+            and a.project_id = #{params.projectId}
+        </if>
+        <if test="params.postName!=null and params.postName!=''">
+            and a.post_name like '%${params.postName}%'
+        </if>
+        <if test="params.startTime!=null">
+            and a.create_time &gt;= #{params.startTime}
+        </if>
+        <if test="params.endTime!=null">
+            and a.create_time &lt;= #{params.endTime}
+        </if>
+        order by a.num asc,a.id asc
+
+    </select>
+
+
+</mapper>

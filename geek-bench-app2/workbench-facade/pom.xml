@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.geek</groupId>
+        <artifactId>workbench</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+        <relativePath>./../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>workbench-facade</artifactId>
+    <dependencies>
+
+        <dependency>
+            <groupId>com.fosung.infrastructure</groupId>
+            <artifactId>infrastructure-web</artifactId>
+            <version>${framework.version}</version>
+            <!--<exclusions>-->
+            <!--<exclusion>-->
+            <!--<groupId>com.fosung.infrastructure</groupId>-->
+            <!--<artifactId>infrastructure-dt</artifactId>-->
+            <!--</exclusion>-->
+            <!--</exclusions>-->
+        </dependency>
+
+        <dependency>
+            <groupId>com.fosung.framework</groupId>
+            <artifactId>framework-common</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fosung.sys</groupId>
+            <artifactId>sys-facade</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fosung.sys</groupId>
+            <artifactId>sys-impl</artifactId>
+            <version>${framework.version}</version>
+        </dependency>
+
+        <!-- 网关SDK -->
+        <dependency>
+            <groupId>com.fosung.gateway</groupId>
+            <artifactId>gateway-sdk</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>net.dongliu</groupId>
+            <artifactId>apk-parser</artifactId>
+            <version>2.5.3</version>
+            <scope>compile</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>

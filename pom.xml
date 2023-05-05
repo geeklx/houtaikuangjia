@@ -10,39 +10,41 @@
         <version>0.7-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.geek.houtai</groupId>
-    <artifactId>houtaikuangjia</artifactId>
+    <groupId>com.geek</groupId>
+    <artifactId>workbench</artifactId>
     <packaging>pom</packaging>
-    <version>2.0.2-SNAPSHOT</version>
-    <name>houtaisystem</name>
-    <description>统一工作台后台框架</description>
+    <version>3.0.0-SNAPSHOT</version>
+    <name>geek-bench</name>
+    <description>移动端统一工作台</description>
 
     <properties>
-        <!--        <maven.compiler.source>11</maven.compiler.source>-->
-        <!--        <maven.compiler.target>11</maven.compiler.target>-->
         <fegin.version>1.4.4.RELEASE</fegin.version>
         <framework.version>0.7-SNAPSHOT</framework.version>
         <!--云平台-->
-        <base.version>2.0.2-SNAPSHOT</base.version>
+        <base.version>3.0.0-SNAPSHOT</base.version>
         <docker.repository>swr.cn-north-4.myhuaweicloud.com</docker.repository>
         <docker.image.prefix>fosung_huawei</docker.image.prefix>
+        <!--云平台-->
+        <!--        <docker.image.prefix>cloud_fosung</docker.image.prefix>-->
+        <!--<docker.image.prefix>fosung_huawei</docker.image.prefix>
+        &lt;!&ndash;新增&ndash;&gt;
+        <docker.repository>swr.cn-north-4.myhuaweicloud.com</docker.repository>-->
+        <beetl.version>3.3.2.RELEASE</beetl.version>
     </properties>
 
-
     <modules>
-        <module>./houtaisystemsupport/demo1</module>
-        <module>./houtaisystemsupport/geek-system-support-client</module>
-        <module>./houtaisystemsupport/geek-system-support-facade</module>
-        <module>./houtaisystemsupport/geek-system-support-outserver</module>
-        <module>./houtaisystemsupport/geek-system-support-pbs</module>
-        <module>./houtaisystemsupport/geek-system-support-rest</module>
-        <module>./houtaisystemsupport/geek-system-support-service</module>
-        <module>./houtaiworkbench/demo2</module>
-        <module>./houtaiworkbench/workbench-configurecenter</module>
-        <module>./houtaiworkbench/workbench-facade</module>
-        <module>./houtaiworkbench/workbench-rest</module>
-        <module>./houtaiworkbench/workbench-service</module>
+        <module>./geek-bench-app1/geek-system-support-facade</module>
+        <module>./geek-bench-app1/geek-system-support-rest</module>
+        <module>./geek-bench-app1/geek-system-support-client</module>
+        <module>./geek-bench-app1/geek-system-support-service</module>
+        <module>./geek-bench-app1/geek-system-support-outserver</module>
+        <module>./geek-bench-app1/geek-system-support-pbs</module>
+        <module>./geek-bench-app2/workbench-configurecenter</module>
+        <module>./geek-bench-app2/workbench-facade</module>
+        <module>./geek-bench-app2/workbench-rest</module>
+        <module>./geek-bench-app2/workbench-service</module>
     </modules>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -50,13 +52,21 @@
                 <artifactId>infrastructure-web</artifactId>
                 <version>0.9-SNAPSHOT</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-config</artifactId>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <repositories>
         <repository>
             <id>nexus</id>
             <name>nexus repository</name>
-            <url>http://nexus.fosung.com:8081/nexus/content/groups/jar-all/</url>
+            <url>http://47.104.8.101:8081/nexus/content/groups/jar-all/</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
@@ -67,33 +77,32 @@
         <pluginRepository>
             <id>nexus</id>
             <name>Team Nexus Repository</name>
-            <url>http://nexus.fosung.com:8081/nexus/content/groups/jar-all/</url>
+            <url>http://47.104.8.101:8081/nexus/content/groups/jar-all/</url>
         </pluginRepository>
     </pluginRepositories>
     <distributionManagement>
         <repository>
             <id>releases</id>
             <name>Nexus Release Repository</name>
-            <url>http://nexus.fosung.com:8081/nexus/content/repositories/releases/</url>
+            <url>http://47.104.8.101:8081/nexus/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>snapshot</id>
             <name>Nexus snapshot Repository</name>
-            <url>http://nexus.fosung.com:8081/nexus/content/repositories/snapshots/</url>
+            <url>http://47.104.8.101:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
     <!-- 项目打包时会将java目录中的*.xml文件也进行打包 -->
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
+    <!--    <build>-->
+    <!--        <resources>-->
+    <!--            <resource>-->
+    <!--                <directory>src/main/java</directory>-->
+    <!--                <includes>-->
+    <!--                    <include>**/*.xml</include>-->
+    <!--                </includes>-->
+    <!--                <filtering>false</filtering>-->
+    <!--            </resource>-->
+    <!--        </resources>-->
 
-    </build>
-
+    <!--    </build>-->
 </project>

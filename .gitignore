@@ -1,16 +1,12 @@
+/.project
 #忽略idea的相关配置文件
 .idea
-<<<<<<< HEAD
-asql
-=======
-#asql
->>>>>>> 2bdce1cb9453989142bcea18024a7866c223a529
 *.iml
 
 #忽略maven的相关配置文件
 target
 .cache
-.project
+
 #忽略日志文件
 log
 logfile.log
@@ -18,8 +14,4 @@ logfile.log
 #忽略rebel文件
 rebel.xml
 .rebel.xml.bk
-
-
-/.idea/
-#/asql/
 .DS_Store
