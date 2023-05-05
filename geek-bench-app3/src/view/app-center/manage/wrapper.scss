@@ -1,0 +1,65 @@
+@import "src/styles/fs-card-plus";
+.wrapper {
+  height: 100%;
+  padding: 14px;
+  border: none;
+  background-color: #F0F2F5;
+  ::v-deep.fs-card__header {
+    background-color: #FFFFFF;
+  }
+  ::v-deep.fs-card__body {
+    background-color: #FFFFFF;
+    height: calc(100% - 50px);
+    overflow-y: hidden;
+    padding: 0;
+    .wrapper-steps {
+      padding: 72px 12px;
+      &__step {
+        width: 1200px;
+      }
+    }
+    .wrapper-bottom {
+      width: 100%;
+      height: calc(100% - 201px);
+      .wrapper-content-detail {
+        height: 100%;
+        width: 100%;
+        .wrapper-content-detail__body {
+          height: calc(100% - 60px);
+          padding: 0 12px 24px;
+          overflow-y: auto;
+          width: 1200px;
+          &__form {
+            width: 100%;
+          }
+          &__table {
+            width: 100%;
+          }
+        }
+        .wrapper-content-detail__bottom {
+          z-index: 100;
+          height: 60px;
+          padding: 0 12px 0 0 !important;
+          background: #F9F9F9;
+          border-top: 1px solid #F0F2F7;
+
+          position: absolute;
+          bottom: 12px;
+          width: calc(100% - 26px);
+        }
+      }
+    }
+  }
+}
+.wrapper-button {
+  border: 1px solid #C50405;
+  color: #C50405;
+}
+.wrapper-table-remove-m-b {
+  ::v-deep.fs-form-item--mini.fs-form-item, .fs-form-item--small.fs-form-item {
+    margin-bottom: 0;
+  }
+}
+.fs-button+.fs-button {
+  margin-left: 12px;
+}

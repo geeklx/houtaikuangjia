@@ -1,0 +1,234 @@
+
+
+.main-container {
+  height: calc(100% - 75px);
+  transition: margin-left .28s;
+  margin-left: $sideBarWidth;
+  position: relative;
+}
+
+.sidebar-container {
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  transition: width 0.28s;
+  width: $sideBarWidth !important;
+  background-color: $menuBg;
+  height: calc(100% - 75px);
+  position: fixed;
+  font-size: 0;
+  top: 75px;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+  overflow: hidden;
+
+  // reset element-ui css
+  .horizontal-collapse-transition {
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+  }
+
+  .scrollbar-wrapper {
+    overflow-x: hidden !important;
+  }
+
+  .fs-scrollbar__bar.is-vertical {
+    right: 0;
+  }
+
+  .fs-scrollbar {
+    height: 100%;
+  }
+
+  .is-horizontal {
+    display: none;
+  }
+
+  a {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .svg-icon {
+    margin-right: 16px;
+  }
+
+  .sub-el-icon {
+    margin-right: 12px;
+    margin-left: -2px;
+  }
+
+  .fs-menu {
+    border: none;
+    height: 100%;
+    width: 100% !important;
+  }
+
+  // menu hover
+  .submenu-title-noDropdown,
+  .fs-submenu__title {
+    position: relative;
+    &:active, &:hover, &:focus {
+      // background-color: $menuHover !important;
+      background: $themeBackground!important;
+      box-sizing: border-box!important;
+    }
+  }
+
+  .is-active>.fs-submenu__title {
+    color: $subMenuActiveText !important;
+  }
+
+  & .nest-menu .fs-submenu>.fs-submenu__title,
+  & .fs-submenu .fs-menu-item {
+    min-width: $sideBarWidth !important;
+    background-color: $subMenuBg !important;
+    &:active, &:hover, &:focus {
+      background: $themeBackground!important;
+    }
+  }
+}
+
+.hideSidebar {
+  .sidebar-container {
+    width: 54px !important;
+  }
+
+  .main-container {
+    margin-left: 54px;
+  }
+
+  .submenu-title-noDropdown {
+    padding: 0 !important;
+    position: relative;
+
+    .fs-tooltip {
+      padding: 0 !important;
+
+      .svg-icon {
+        margin-left: 20px;
+      }
+
+      .sub-el-icon {
+        margin-left: 19px;
+      }
+    }
+  }
+
+  .fs-submenu {
+    overflow: hidden;
+
+    &>.fs-submenu__title {
+      padding: 0 !important;
+
+      .svg-icon {
+        margin-left: 20px;
+      }
+
+      .sub-el-icon {
+        margin-left: 19px;
+      }
+
+      .fs-submenu__icon-arrow {
+        display: none;
+      }
+    }
+  }
+
+  .fs-menu--collapse {
+    .fs-menu-item {
+      @extend .common
+    }
+    .fs-submenu {
+      &>.fs-submenu__title {
+        @extend .common
+      }
+    }
+  }
+}
+.common {
+  text-align: center;
+  .svg-icon {
+    margin: 0;
+  }
+  &>span {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+    display: inline-block;
+  }
+}
+
+
+.fs-menu--collapse .fs-menu .fs-submenu {
+  min-width: $sideBarWidth !important;
+}
+
+// mobile responsive
+.mobile {
+  .main-container {
+    margin-left: 0;
+  }
+
+  .sidebar-container {
+    transition: transform .28s;
+    width: $sideBarWidth !important;
+  }
+
+  &.hideSidebar {
+    .sidebar-container {
+      pointer-events: none;
+      transition-duration: 0.3s;
+      transform: translate3d(-$sideBarWidth, 0, 0);
+    }
+  }
+}
+
+.withoutAnimation {
+
+  .main-container,
+  .sidebar-container {
+    transition: none;
+  }
+}
+
+
+// when menu collapsed
+.fs-menu--vertical {
+  &>.fs-menu {
+    .svg-icon {
+      margin-right: 16px;
+    }
+    .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
+    }
+  }
+
+  .nest-menu .fs-submenu>.fs-submenu__title,
+  .fs-menu-item {
+    &:active, &:hover, &:focus {
+      // you can use $subMenuHover
+      background-color: $menuHover !important;
+    }
+  }
+
+  // the scroll bar appears when the subMenu is too long
+  >.fs-menu--popup {
+    max-height: 100vh;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar-track-piece {
+      background: #d3dce6;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #99a9bf;
+      border-radius: 20px;
+    }
+  }
+}

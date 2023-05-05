@@ -1,0 +1,107 @@
+.show-info {
+  &-item:not(:first-child) {
+    margin-top: 10px;
+  }
+  &-item {
+    color: #333333;
+    font-size: 12px;
+    display: flex;
+    &__label {
+      min-width: 75px;
+      max-width: 75px;
+    }
+    &__value {
+      min-width: calc(100% - 75px);
+      max-width: calc(100% - 75px);
+      &__tip {
+        width: 100%;
+        padding-bottom: 1px;
+        white-space: nowrap;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+.label__60 {
+  .show-info-item {
+    &__label {
+      min-width: 60px !important;
+      max-width: 60px !important;
+    }
+    &__value {
+      min-width: calc(100% - 60px) !important;
+      max-width: calc(100% - 60px) !important;
+    }
+  }
+}
+.label__90 {
+  .show-info-item {
+    &__label {
+      min-width: 90px !important;
+      max-width: 90px !important;
+    }
+    &__value {
+      min-width: calc(100% - 90px) !important;
+      max-width: calc(100% - 90px) !important;
+    }
+  }
+}
+.label__100 {
+  .show-info-item {
+    &__label {
+      min-width: 100px !important;
+      max-width: 100px !important;
+    }
+    &__value {
+      min-width: calc(100% - 100px) !important;
+      max-width: calc(100% - 100px) !important;
+    }
+  }
+}
+.label__120 {
+  .show-info-item {
+    &__label {
+      min-width: 120px !important;
+      max-width: 120px !important;
+    }
+    &__value {
+      min-width: calc(100% - 120px) !important;
+      max-width: calc(100% - 120px) !important;
+    }
+  }
+}
+.label__140 {
+  .show-info-item {
+    &__label {
+      min-width: 140px !important;
+      max-width: 140px !important;
+    }
+    &__value {
+      min-width: calc(100% - 140px) !important;
+      max-width: calc(100% - 140px) !important;
+    }
+  }
+}
+.label__150 {
+  .show-info-item {
+    &__label {
+      min-width: 150px !important;
+      max-width: 150px !important;
+    }
+    &__value {
+      min-width: calc(100% - 150px) !important;
+      max-width: calc(100% - 150px) !important;
+    }
+  }
+}
+.show-table {
+  margin-top: 20px;
+  ::v-deep.fs-table__header tr th {
+    background-color: #F9F9F9
+  }
+  ::v-deep.cell {
+    white-space: normal !important;
+  }
+}

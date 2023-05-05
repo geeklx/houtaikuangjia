@@ -1,0 +1,38 @@
+$backgrounColor: #0c8cf6;
+$borderColor: #0c8cf6;
+$fontColor: #fff;
+$disabledBackgrounColor: #a0cfff;
+$disabledBorderColor: #a0cfff;
+
+// 蓝色按样式 本class供主样式继承不在项目中直接使用
+.blue-button-basic {
+  background-color: $backgrounColor;
+  border-color: $borderColor;
+  color: $fontColor;
+}
+// 蓝色按钮禁用样式 本class供主样式继承不在项目中直接使用
+.blue-button-d-basic {
+  background: $disabledBackgrounColor;
+  border-color: $disabledBorderColor;
+  color: $fontColor;
+}
+
+.fs-blue,
+.in-table-button {
+  @extend .blue-button-basic;
+  &:hover {
+    @extend .blue-button-basic;
+  }
+  &:active {
+    @extend .blue-button-basic;
+  }
+  &:focus {
+    @extend .blue-button-basic;
+  }
+  &.is-disabled {
+    @extend .blue-button-d-basic;
+    &:hover {
+      @extend .blue-button-d-basic;
+    }
+  }
+}

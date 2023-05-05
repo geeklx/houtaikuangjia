@@ -1,0 +1,124 @@
+// cover some element-ui styles
+
+.fs-breadcrumb__inner,
+.fs-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.fs-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.fs-upload__input {
+  display: none;
+}
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.fs-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// refine element ui upload
+.upload-container {
+  .fs-upload {
+    width: 100%;
+
+    .fs-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.fs-dropdown-menu {
+  a {
+    display: block
+  }
+}
+
+// to fix fs-date-picker css style
+.fs-range-separator {
+  box-sizing: content-box;
+}
+.list-button-orange{
+  background-color: #E50D02 !important;
+  border-color: #E50D02 !important;
+  & > span{
+    color: #FFFFFF !important;
+  }
+  & > i{
+    color: #FFFFFF !important;
+  }
+}
+.title-warp-container{
+  height: 25px;
+  border-bottom: 1px solid #a8a8a8;
+  color: #e50d02;
+  font-size: 14px;
+  font-weight: bold;
+}
+.fs-pagination.is-background .btn-next, .fs-pagination.is-background .btn-prev, .fs-pagination.is-background .fs-pager li{
+  background-color: white;
+  border: 1px solid #f4f4f5;
+}
+.fs-pagination.is-background .fs-pager li:not(.disabled){
+  &.active{
+    background-color: white;
+    color: #df2a2a;
+    border: 1px solid #df2a2a;
+  }
+  &:hover{
+    color: #df2a2a;
+  }
+}
+//表单项名称右对齐
+.fs-form-item .fs-form-item__label{
+  text-align: right;
+}
+//表格内容超出隐藏
+.fs-table {
+  .cell{
+    white-space: nowrap!important;
+    font-size: 16px;
+  }
+
+}
+// 弹窗保存和取消按钮统一样式
+.fs-dialog__body{
+  padding-bottom: 20px;
+}
+.fs-dialog__footer{
+  .Save_button{
+    // background-color: #DF2A2A;
+    // width: 130px;
+    // height: 30px;
+    border: none;
+    // border-radius: 5px;
+  }
+  .Cancel_button{
+    // width: 130px;
+    // height: 30px;
+    // border-radius: 5px;
+  }
+}
+.fs-dialog__header{
+  border-bottom: 1px solid #E9E9E9 !important;
+  .fs-dialog__headerbtn{
+    top: 23px;
+  }
+}
+
+.fs-card__body {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.fs-select {
+  width: 100%;
+}

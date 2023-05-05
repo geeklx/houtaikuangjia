@@ -1,0 +1,170 @@
+import Layout from '@/layout'
+const load = require('./import/_import_' + process.env.NODE_ENV)
+// 静态路由配置示例
+const menu = [
+  {
+    name: '/',
+    path: '/',
+    component: Layout,
+    children: [
+      {
+        name: 'dashboard',
+        path: 'dashboard',
+        component: load('view/dashboard/index'),
+        meta: { title: '首页', icon: 'main-home-page' }
+      },
+      {
+        name: 'system-manage',
+        path: 'system-manage',
+        component: load('view/system-manage/index'),
+        meta: { title: '前端应用管理', icon: 'main-home-page' }
+      },
+      {
+        name: 'gateway-manage',
+        path: 'gateway-manage',
+        component: load('view/gateway-manage/index'),
+        meta: { title: '网关管理', icon: 'main-home-page' },
+        redirect: 'noRedirect', // 面包屑禁止点击
+        children: [
+          {
+            name: 'gateway-cluster',
+            path: 'gateway-cluster',
+            component: load('view/gateway-manage/cluster/list'),
+            meta: { title: '网关集群' }
+          },
+          {
+            name: 'gateway-instance',
+            path: 'gateway-instance',
+            component: load('view/gateway-manage/instance/list'),
+            meta: { title: '网关实例' }
+          }
+        ]
+      },
+      {
+        name: 'service-layout',
+        path: 'service-layout',
+        component: load('view/service-manage/index'),
+        meta: { title: '服务编排', icon: 'main-home-page' },
+        redirect: 'noRedirect', // 面包屑禁止点击
+        children: [
+          {
+            name: 'service-manage',
+            path: 'service-manage',
+            component: load('view/service-manage/manage/list'),
+            meta: { title: '服务管理' }
+          },
+          {
+            name: 'service-instance',
+            path: 'service-instance',
+            component: load('view/service-manage/instance/list'),
+            meta: { title: '服务实例' }
+          },
+          {
+            name: 'Resources',
+            path: 'resources',
+            component: load('view/service-manage/resources/list'),
+            meta: { title: '服务接口' }
+          },
+          {
+            name: 'RecourseActive',
+            path: 'active',
+            component: load('view/service-manage/resources/active'),
+            hidden: true,
+            meta: { title: '服务接口管理' }
+          },
+          {
+            name: 'resource-auth',
+            path: 'resource-auth',
+            component: load('view/service-manage/resource-auth/list'),
+            meta: { title: '接口认证' }
+          }
+        ]
+      },
+      {
+        name: 'safety-manage',
+        path: 'safety-manage',
+        component: load('view/safety-manage/index'),
+        meta: { title: '安全管理', icon: 'main-home-page' },
+        redirect: 'noRedirect',
+        children: [
+          {
+            name: 'access-control',
+            path: 'access-control',
+            component: load('view/safety-manage/access-control/list'),
+            meta: { title: '访问控制' }
+          },
+          {
+            name: 'access-auth',
+            path: 'access-auth',
+            component: load('view/safety-manage/access-auth/list'),
+            meta: { title: '访问授权' }
+          }
+        ]
+      },
+      {
+        name: 'service-review',
+        path: 'service-review',
+        component: load('view/service-review/index'),
+        meta: { title: '服务审核', icon: 'main-home-page' },
+        redirect: 'noRedirect', // 面包屑禁止点击
+        children: [
+          {
+            name: 'wait-me-review',
+            path: 'wait-me-review',
+            component: load('view/service-review/wait-me-review/list'),
+            meta: { title: '待我审核' }
+          },
+          {
+            name: 'review-log',
+            path: 'review-log',
+            component: load('view/service-review/review-log/list'),
+            meta: { title: '审核日志' }
+          }
+        ]
+      },
+      {
+        name: 'developer-center',
+        path: 'developer-center',
+        component: load('view/developer-center/index'),
+        meta: { title: '开发者中心', icon: 'main-home-page' },
+        redirect: '/developer-center/list', // 面包屑禁止点击
+        children: [
+          {
+            name: 'list',
+            path: 'list',
+            component: load('view/developer-center/service-catalog/list'),
+            meta: { title: '服务目录' }
+          },
+              {
+                name: 'api-document',
+                path: 'api-document',
+                hidden: true,
+                component: load('view/developer-center/service-catalog/api-document'),
+                meta: { title: 'API文档' }
+              },
+          {
+            name: 'interface-test',
+            path: 'interface-test',
+            hidden: true,
+            component: load('view/developer-center/service-catalog/interface-test'),
+            meta: { title: '接口测试' }
+          },
+          {
+            name: 'service-sdk',
+            path: 'service-sdk',
+            component: load('view/developer-center/service-sdk/list'),
+            meta: { title: '服务SDK' }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: load('view/login/login'),
+    meta: { title: '登录页面', icon: 'main-home-page' }
+  }
+]
+
+export default menu

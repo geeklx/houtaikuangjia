@@ -1,0 +1,31 @@
+.module-title {
+  color: $themeColor;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.module-title::before {
+  margin-right: 8px;
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  border-radius: 25px;
+  background: $themeColor;
+}
+.module-sub-title {
+  color: #666666;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+.module-sub-title::before {
+  margin-right: 8px;
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  border-radius: 25px;
+  background: $themeColor;
+}

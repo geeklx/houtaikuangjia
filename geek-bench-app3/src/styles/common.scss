@@ -1,0 +1,814 @@
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix::after,
+.clearfix::before {
+  content: '';
+  display: block;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.inlineBlock {
+  display: inline-block;
+}
+
+.visiHidden {
+  visibility: hidden;
+}
+
+.noPadding {
+  padding: 0 !important;
+}
+
+.noBorder {
+  border: none !important;
+}
+
+.border {
+  border: 1px solid #eeeff1;
+}
+
+.margin0Atuo {
+  margin: 0 auto;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textLeft {
+  text-align: left;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+}
+
+.underLine {
+  text-decoration: underline;
+}
+
+.blueUnderLine,
+.blueUnderLine:focus,
+.blueUnderLine:hover, {
+  cursor: pointer;
+  color: #0C8CF6;
+  text-decoration: underline;
+}
+
+.verticalMidle {
+  vertical-align: middle;
+}
+
+.verticalTop {
+  vertical-align: top;
+}
+
+.textOverflow {
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.heightAuto {
+  height: auto;
+}
+
+.widthAuto {
+  width: auto;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.height100 {
+  height: 100%;
+}
+
+.imgOutside {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+}
+
+.circle50per {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.commonImgHeight {
+  display: block;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.commonImgWidth {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.centerMiddleFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*垂直居中需设置宽高*/
+.centerMiddleAbs {
+  /*需要自行设置宽高行高*/
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: inherit;
+  height: inherit;
+  line-height: inherit;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/*垂直居中table法,外层盒子需设置display:table属性*/
+.centerMiddleTable {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/*顶部header和table固定，需设定高和其他样式*/
+.stikyHeader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+}
+
+/*底部footer固定，需设定高和其他样式*/
+.stikyFooter {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+}
+
+/*栅格系统*/
+
+.col-box::before,
+.col-box::after {
+  display: table;
+  content: " ";
+}
+
+.col-box::after {
+  clear: both;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding: 0 0.1rem 0 0.1rem;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.col-11 {
+  width: 91.66666667%;
+}
+
+.col-10 {
+  width: 83.33333333%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-8 {
+  width: 66.66666667%;
+}
+
+.col-7 {
+  width: 58.33333333%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-5 {
+  width: 41.66666667%;
+}
+
+.col-4 {
+  width: 33.33333333%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-2 {
+  width: 16.66666667%;
+}
+
+.col-1 {
+  width: 8.33333333%;
+}
+
+.col-offset-12 {
+  margin-left: 100%;
+}
+
+.col-offset-11 {
+  margin-left: 91.66666667%;
+}
+
+.col-offset-10 {
+  margin-left: 83.33333333%;
+}
+
+.col-offset-9 {
+  margin-left: 75%;
+}
+
+.col-offset-8 {
+  margin-left: 66.66666667%;
+}
+
+.col-offset-7 {
+  margin-left: 58.33333333%;
+}
+
+.col-offset-6 {
+  margin-left: 50%;
+}
+
+.col-offset-5 {
+  margin-left: 41.66666667%;
+}
+
+.col-offset-4 {
+  margin-left: 33.33333333%;
+}
+
+.col-offset-3 {
+  margin-left: 25%;
+}
+
+.col-offset-2 {
+  margin-left: 16.66666667%;
+}
+
+.col-offset-1 {
+  margin-left: 8.33333333%;
+}
+
+.col-offset-0 {
+  margin-left: 0;
+}
+
+/*flex系统不与float、vertical-align共用*/
+.flexLeftTop {
+  display: flex;
+}
+
+.flexCenterTop {
+  display: flex;
+  justify-content: center;
+}
+
+.flexRightTop {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flexBetweenTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexLeftCenter {
+  display: flex;
+  align-items: center;
+}
+
+.flexMiddleCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexRightCenter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flexLeftBottom {
+  display: flex;
+  align-items: flex-end;
+}
+
+.flexCenterBottom {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.flexRightBottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/*多项目排列*/
+.flexManyItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.topBottomFixed {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.leftRightFixed {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+/*网格布局*/
+.flex {
+  display: flex;
+}
+
+.flexCell {
+  flex: 1;
+}
+
+.flexCellFull {
+  flex: 0 0 100%;
+}
+
+.flexCell1of2 {
+  flex: 0 0 50%;
+}
+
+.flexCell1of3 {
+  flex: 0 0 33.333%;
+}
+
+.flexCell1of4 {
+  flex: 0 0 25%;
+}
+
+/*圣杯布局*/
+.holyGrailBox {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.holyGrailHeader,
+.holyGrailFooter {
+  flex: 1;
+}
+
+.holyGrailBody {
+  display: flex;
+  flex: 1;
+}
+
+.holyGrailContent {
+  flex: 1;
+}
+
+.holyGrailNav,
+.holyGrailAds {
+  flex: 0 0 12em;
+}
+
+.holyGrailNav {
+  order: -1;
+}
+
+/*调用示例：
+ <div class="holyGrailBox">
+ <div class="holyGrailHeader">头部</div>
+ <div class="holyGrailBody">
+ <div class="holyGrailContent">内容</div>
+ <div class="holyGrailNav">导航</div>
+ <div class="holyGrailAds">广告</div></div>
+ <div class="holyGrailFooter">底部</div></div>*/
+
+/*流式布局*/
+.fluidLayoutParent {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+.fluidLayoutChild {
+  box-sizing: border-box;
+  flex: 0 0 25%;
+}
+
+.workbench-upload {
+  .fs-upload {
+    border: 1px dashed #d9d9d9;
+    background-color: #F5F5F5;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    width: 104px;
+    height: 104px;
+    .workbench-upload__operate {
+      display: none;
+    }
+    .workbench-upload__operate i {
+      color: #FFF;
+      font-size: 18px;
+    }
+    .workbench-upload__operate i:first-child {
+      margin-right: 26px;
+    }
+    &:hover .workbench-upload__operate {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      .icons {
+        display: flex;
+        height: 40%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0,0,0,0.5);
+      }
+    }
+  }
+  &__avatar {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  &__icon {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #666666;
+    text-align: center;
+  }
+}
+
+.workbench-upload-text {
+  color: #999999;
+  font-size: 14px;
+}
+
+.workbench-table {
+  .fs-table .fs-table__header-wrapper thead tr th {
+    background-color: #F9F9F9;
+    height: 48px;
+  }
+  .fs-table .fs-table__body-wrapper tbody tr td {
+    height: 48px;
+  }
+}
+
+.fs-table .cell {
+  font-size: 14px !important;
+  color: #333333;
+}
+
+.fs-range-editor {
+  &.is-active, &.is-active:hover {
+    border-color: $themeColor;
+  }
+}
+
+.fs-date-table {
+  td.end-date span, td.start-date span {
+    &, &:hover {
+      background-color: $themeColor;
+      color: #FFFFFF;
+    }
+  }
+  td span, td div {
+   &:hover {
+     color: $themeColor;
+   }
+ }
+}
+
+.fs-button--text, .fs-date-table td.today span {
+  color: $themeColor;
+}
+
+.fs-transfer-panel__item.fs-checkbox {
+  color: #333333;
+}
+
+.fs-checkbox__input {
+  &.is-indeterminate .fs-checkbox__inner {
+    background-color: $themeColor;
+    border-color: $themeColor;
+  }
+  &.is-checked .fs-checkbox__inner {
+    background-color: $themeColor;
+    border-color: $themeColor;
+  }
+  &.is-disabled.is-checked .fs-checkbox__inner {
+    background-color: $themeDisBackground;
+    border: 1px solid $themeDisBackground;
+    &::after {
+      border-color: #FFFFFF;
+    }
+  }
+  &.is-focus .fs-checkbox__inner {
+    border-color: $themeColor;
+  }
+  & .fs-checkbox__inner, &.is-focus .fs-checkbox__inner {
+    &:active, &:hover, &:focus {
+      border-color: $themeColor;
+    }
+  }
+  &.is-checked+.fs-checkbox__label {
+    color: $themeColor;
+  }
+}
+
+.fs-radio {
+  & > .fs-radio__input {
+    & > .fs-radio__inner {
+      &:active, &:hover, &:focus {
+        border: 1px solid $themeColor;
+      }
+    }
+  }
+  &.is-checked {
+    & > .fs-radio__input {
+      & > .fs-radio__inner {
+        border: 1px solid $themeColor;
+        background: $themeColor;
+      }
+    }
+    & > .fs-radio__label {
+      color: $themeColor;
+    }
+  }
+}
+
+.fs-button {
+  &.fs-button--primary {
+    background-color: $themeColor;
+    border-color: $themeColor;
+
+    &.is-plain {
+      background-color: $themeBackground;
+      border-color: $themeColor;
+      color: $themeColor;
+
+      &:active, &:hover, &:focus {
+        border-color: $themeColor;
+        background-color: $themeColor;
+        color: #FFF;
+      }
+    }
+    &.is-disabled {
+      background-color: #CCCCCC;
+      border-color: #CCCCCC;
+      color: #FFF;
+      &:active, &:focus, &:hover {
+        background-color: #CCCCCC;
+        border-color: #CCCCCC;
+        color: #FFF;
+      }
+    }
+  }
+
+  &.fs-button--default {
+    &:active, &:hover, &:focus {
+      color: $themeColor;
+      border-color: $themeColor;
+      background-color: $themeBackground;
+    }
+
+    &.is-plain {
+      &:active, &:hover, &:focus {
+        color: $themeColor;
+        border-color: $themeColor;
+      }
+    }
+  }
+}
+
+.fs-switch {
+  &.is-checked .fs-switch__core {
+    border-color: $themeColor;
+    background-color: $themeColor;
+  }
+}
+
+.fs-message-box {
+  & > .fs-message-box__btns {
+    .fs-button {
+      &.fs-button--default {
+        &:active, &:hover, &:focus {
+          background-color: $themeBackground;
+          border-color: $themeColor;
+          color: $themeColor;
+        }
+        &.fs-button--primary {
+          background-color: $themeColor;
+          border-color: $themeColor;
+          color: #FFF;
+        }
+      }
+    }
+  }
+  .fs-message-box__headerbtn .fs-message-box__close {
+    &:active, &:hover, &:focus {
+      color: $themeColor;
+    }
+  }
+}
+
+.fs-dialog {
+  & > .fs-dialog__header > .fs-dialog__headerbtn {
+    &:active, &:hover, &:focus {
+      .fs-dialog__close {
+        color: $themeColor;
+      }
+    }
+  }
+}
+
+.fs-dropdown {
+  & > .fs-button.fs-button--default {
+    &:active, &:hover, &:focus {
+      color: $themeColor;
+      border-color: $themeColor;
+      background-color: $themeBackground;
+    }
+  }
+}
+
+.fs-dropdown-menu {
+  padding: 8px 10px;
+  & > .fs-dropdown-menu__item {
+    text-align: center;
+    &:active, &:hover, &:focus {
+      color: $themeColor;
+      border-color: $themeColor;
+      background-color: $themeBackground;
+    }
+  }
+}
+
+.fs-progress > .fs-progress-bar {
+  .fs-progress-bar__outer > .fs-progress-bar__inner {
+    background-color: $themeColor;
+  }
+}
+
+.fs-upload-list {
+  .fs-upload-list__item.is-success > .fs-upload-list__item-name {
+    &:active, &:hover, &:focus {
+      color: $themeColor;
+    }
+  }
+}
+
+.fs-step {
+  .fs-step__head {
+    &.is-finish {
+      .fs-step__line > .fs-step__line-inner {
+        border-color: $themeColor;
+      }
+      .fs-step__icon.is-text {
+        color: $themeColor;
+        border-color: $themeColor;
+      }
+    }
+    &.is-process {
+      .fs-step__icon.is-text {
+        background-color: $themeColor;
+      }
+    }
+  }
+}
+
+.fs-tabs {
+  & > .fs-tabs__header > .fs-tabs__nav-wrap > .fs-tabs__nav-scroll {
+    .fs-tabs__nav {
+      .fs-tabs__active-bar{
+        color: $themeColor;
+        background-color: $themeColor;
+      }
+      .fs-tabs__item.is-active, .fs-tabs__item:hover {
+        color: $themeColor;
+      }
+    }
+  }
+}
+
+.fs-select-dropdown {
+  max-width: 372px;
+}
+
+.fs-select-dropdown__item.selected,
+.fs-select-dropdown.is-multiple .fs-select-dropdown__item.selected,
+.fs-pager li.active,
+.fs-time-panel__btn.confirm {
+  color: $themeColor;
+}
+
+.fs-picker-panel__link-btn.fs-button--text,
+.fs-pagination > button,
+.fs-pager li {
+  &:hover, &:active, &:focus {
+    color: $themeColor;
+  }
+}
+
+.fs-pagination__sizes .fs-select .fs-input > .fs-input__inner, .fs-input:not(.is-disabled) > .fs-input__inner {
+  &:active, &:hover, &:focus {
+    border-color: $themeColor;
+  }
+}
+
+.fs-tooltip__popper {
+  max-width: 40%;
+}

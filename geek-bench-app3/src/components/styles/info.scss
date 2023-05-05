@@ -1,0 +1,78 @@
+.show-info {
+  &__item:not(:first-child) {
+    margin-top: 16px;
+  }
+  &__item {
+    font-size: 14px;
+    display: flex;
+    &__label {
+      width: 75px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    &__value {
+      width: calc(100% - 75px);
+      white-space: normal;
+      word-break: break-word;
+    }
+  }
+}
+.label__80 {
+  .show-info__item {
+    &__label {
+      width: 80px !important;
+    }
+    &__value {
+      width: calc(100% - 80px) !important;
+    }
+  }
+}
+.label__90 {
+  .show-info__item {
+    &__label {
+      width: 90px !important;
+    }
+    &__value {
+      width: calc(100% - 90px) !important;
+    }
+  }
+}
+.label__100 {
+  .show-info__item {
+    &__label {
+      width: 100px !important;
+    }
+    &__value {
+      width: calc(100% - 100px) !important;
+    }
+  }
+}
+.label__120 {
+  .show-info__item {
+    &__label {
+      width: 120px !important;
+    }
+    &__value {
+      width: calc(100% - 120px) !important;
+    }
+  }
+}
+.label__140 {
+  .show-info__item {
+    &__label {
+      width: 140px !important;
+    }
+    &__value {
+      width: calc(100% - 140px) !important;
+    }
+  }
+}
+.show-table {
+  margin-top: 20px;
+  ::v-deep.fs-table__header tr th {
+    background-color: #F9F9F9
+  }
+  ::v-deep.cell {
+    white-space: normal !important;
+  }
+}

@@ -1,0 +1,23 @@
+.fs-card {
+  ::v-deep.fs-card__header {
+    padding: 0 0 0 12px;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #F0F2F7;
+
+    color: $themeColor;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  ::v-deep.fs-card__header::before {
+    margin-right: 8px;
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 16px;
+    border-radius: 25px;
+    background: $themeColor;
+  }
+}
